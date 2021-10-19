@@ -5,7 +5,7 @@ import { HomeScreen, ProfileScreen } from "./src/screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
-const MyStack = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -14,8 +14,13 @@ const MyStack = () => {
           component={HomeScreen}
           options={{ title: "Welcome" }}
         />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen 
+          name="Profile" 
+          component={ProfileScreen} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+export default App

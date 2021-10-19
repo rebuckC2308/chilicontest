@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Button } from "react-native";
+import { Text } from "react-native";
 
-const HomeScreen = ({ navigation }) => {
+export const HomeScreen = ({ navigation }) => {
   return (
     <Button
       title="Go to Jane's profile"
