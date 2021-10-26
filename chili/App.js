@@ -1,26 +1,19 @@
 import * as React from "react";
+import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, ProfileScreen } from "./src/screens/HomeScreen";
+import { HomeScreen } from "./src/HomeScreen/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Welcome" }}
-        />
-        <Stack.Screen 
-          name="Profile" 
-          component={ProfileScreen} 
-        />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Chili Cook Off" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
-export default App
+export default App;
