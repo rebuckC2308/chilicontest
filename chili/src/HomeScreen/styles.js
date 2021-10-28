@@ -26,4 +26,26 @@ export const styles = StyleSheet.create({
   gapIcon: {
     marginLeft: 10,
   },
+
+  logo: {
+    width: 60,
+    height: 60,
+
+    display: "flex",
+  },
+
+  titleText: {
+    fontSize: 50,
+    display: "flex",
+    color: globalColors.LIGHT_GREY,
+    fontFamily: "notoserif",
+  },
+
+  titleContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    marginBottom: 250,
+  },
 });
