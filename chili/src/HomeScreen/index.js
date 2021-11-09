@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { HomeScreen } from "./HomeScreen";
+import { RegisterScreen } from "../RegisterScreen/RegisterScreen";
 
 export const LandingScreen = () => {
   const [view, setView] = useState(views.HOME_SCREEN);
@@ -14,7 +15,7 @@ export const LandingScreen = () => {
       return <Text>Login</Text>;
 
     case views.REGISTER:
-      return <Text>Register</Text>;
+      return <RegisterScreen />;
 
     default:
       return null;
