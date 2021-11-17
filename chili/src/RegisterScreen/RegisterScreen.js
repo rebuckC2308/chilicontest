@@ -8,7 +8,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Input } from "react-native-elements";
 import PassMeter from "react-native-passmeter";
 import { LogBox } from "react-native";
-LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+import { handleRegister } from "../Helpers/register";
+
+LogBox.ignoreLogs(["Warning: ...", "Animated: `useNativeDriver`"]); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const MAX_LEN = 15,
@@ -23,8 +25,6 @@ export const RegisterScreen = () => {
   const [verifyPassword, setVerifyPassword] = useState("");
 
   const isRegisterDisabled = password !== verifyPassword || password.length < 3;
-
-  console.log(password !== verifyPassword || password.length < 3 || !username);
 
   return (
     <View style={styles.container}>
@@ -87,7 +87,13 @@ export const RegisterScreen = () => {
           minLength={MIN_LEN}
           labels={PASS_LABELS}
         />
-        <Button title={"Register"} disabled={isRegisterDisabled} />
+        <View style={styles.registerButton}>
+          <Button
+            title={"Register"}
+            disabled={isRegisterDisabled}
+            onPress={handleRegister}
+          />
+        </View>
       </View>
     </View>
   );

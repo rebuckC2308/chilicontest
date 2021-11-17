@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { HomeScreen } from "./HomeScreen";
 import { RegisterScreen } from "../RegisterScreen/RegisterScreen";
+import { views } from "../Constants/constants";
 
 export const LandingScreen = () => {
   const [view, setView] = useState(views.HOME_SCREEN);
@@ -20,11 +21,4 @@ export const LandingScreen = () => {
     default:
       return null;
   }
-};
-
-//represents the three views potnetially to be on
-export const views = {
-  HOME_SCREEN: "HomeScreen",
-  LOGIN: "Login",
-  REGISTER: "Register",
 };

@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import { styles } from "./styles";
 import SvgComponent from "../TestComponent";
-import { views } from "./index";
+import { views } from "../Constants/constants";
 
 export const HomeScreen = ({ setView }) => {
   return (

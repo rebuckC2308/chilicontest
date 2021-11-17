@@ -44,4 +44,8 @@ export const styles = StyleSheet.create({
   inputContainer: {
     flexGrow: 1,
   },
+
+  registerButton: {
+    marginTop: 50,
+  },
 });
