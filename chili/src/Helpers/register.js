@@ -1,4 +1,4 @@
-export const handleRegister = async () => {
+export const handleRegister = async (username, password) => {
   // Example POST method implementation:
   // Default options are marked with *
 
@@ -10,8 +10,8 @@ export const handleRegister = async () => {
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({
-        email: "test@gmail.com",
-        password: "usersPassword!",
+        email: username,
+        password: password,
       }), // body data type must match "Content-Type" header
     });
     console.log("FINISHED");

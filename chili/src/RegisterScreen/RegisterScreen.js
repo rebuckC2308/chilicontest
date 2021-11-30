@@ -91,7 +91,7 @@ export const RegisterScreen = () => {
           <Button
             title={"Register"}
             disabled={isRegisterDisabled}
-            onPress={handleRegister}
+            onPress={() => handleRegister(username, password)}
           />
         </View>
       </View>
