@@ -14,8 +14,7 @@ export const handleRegister = async (username, password) => {
         password: password,
       }), // body data type must match "Content-Type" header
     });
-    console.log("FINISHED");
-    console.log("GOT HERE");
+
     const res = await response.json();
     console.log(res);
     return res; // parses JSON response into native JavaScript objects
