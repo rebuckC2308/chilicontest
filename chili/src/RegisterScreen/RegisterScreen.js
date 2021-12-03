@@ -8,7 +8,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Input } from "react-native-elements";
 import PassMeter from "react-native-passmeter";
 import { LogBox } from "react-native";
+import { globalColors } from "../styles";
 import { handleRegister } from "../Helpers/register";
+import { views } from "../Constants/constants";
 
 LogBox.ignoreLogs(["Warning: ...", "Animated: `useNativeDriver`"]); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
@@ -17,7 +19,7 @@ const MAX_LEN = 15,
   MIN_LEN = 6,
   PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({ setView }) => {
   const [username, setUsername] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isVerifyPasswordVisible, setIsVerifyPasswordVisible] = useState(false);
@@ -87,12 +89,24 @@ export const RegisterScreen = () => {
           minLength={MIN_LEN}
           labels={PASS_LABELS}
         />
-        <View style={styles.registerButton}>
-          <Button
-            title={"Register"}
-            disabled={isRegisterDisabled}
-            onPress={() => handleRegister(username, password)}
-          />
+
+        <View style={styles.buttons}>
+          <View style={styles.buttonContainer}>
+            <Button
+              title={"Register"}
+              buttonStyle={styles.buttonBackgroundColor}
+              disabled={isRegisterDisabled}
+              onPress={() => handleRegister(username, password)}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              containerStyle={styles.buttonStyle}
+              buttonStyle={styles.buttonBackgroundColor}
+              title={"Home"}
+              onPress={() => setView(views.HOME_SCREEN)}
+            />
+          </View>
         </View>
       </View>
     </View>

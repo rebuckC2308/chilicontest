@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flexGrow: 1,
     width: "100%",
+    marginTop: 100,
   },
 
   input: {
@@ -43,9 +44,22 @@ export const styles = StyleSheet.create({
 
   inputContainer: {
     flexGrow: 1,
+    marginTop: 75,
   },
 
-  registerButton: {
+  buttonContainer: {
+    display: "flex",
+    alignSelf: "center",
+    marginBottom: 30,
+    width: 200,
+    alignItems: "stretch",
+  },
+
+  buttons: {
     marginTop: 50,
+  },
+
+  buttonBackgroundColor: {
+    backgroundColor: globalColors.ORANGE,
   },
 });
