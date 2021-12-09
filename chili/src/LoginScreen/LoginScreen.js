@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { styles } from "./stylesLogin";
 import SvgComponent from "../TestComponent";
 import { globalColors } from "../styles";
 import { views } from "../Constants/constants";
+import { handleLogin } from "../Helpers/login";
 
 export const LoginScreen = ({ setView }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -23,12 +27,18 @@ export const LoginScreen = ({ setView }) => {
           placeholder="Username or Email"
           autoCapitalize="none"
           autoComplete="off"
+          onChangeText={(input) => {
+            setUsername(input);
+          }}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           autoCapitalize="none"
           autoComplete="off"
+          onChangeText={(input) => {
+            setPassword(input);
+          }}
         />
       </View>
 
@@ -37,6 +47,7 @@ export const LoginScreen = ({ setView }) => {
           containerStyle={styles.buttonStyle}
           color={globalColors.ORANGE}
           title={"Login"}
+          onPress={() => handleLogin(username, password)}
         />
       </View>
       <View style={styles.buttonContainer}>

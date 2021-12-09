@@ -1,9 +1,9 @@
-export const handleRegister = async (username, password) => {
+export const handleLogin = async (username, password) => {
   // Example POST method implementation:
   // Default options are marked with *
 
   try {
-    const response = await fetch("http://10.0.2.2:3000/users", {
+    const response = await fetch("http://10.0.2.2:3000/login", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,8 @@ export const handleRegister = async (username, password) => {
     return res; // parses JSON response into native JavaScript objects
   } catch (error) {
     console.error(error);
-    console.log("Error in  handleRegister");
+    console.log("Error in logging in");
     return;
   }
 };
+console.log("Login Pressed");
