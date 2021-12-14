@@ -3,7 +3,7 @@ export const handleRegister = async (username, password) => {
   // Default options are marked with *
 
   try {
-    const response = await fetch("http://10.0.2.2:3000/users", {
+    const response = await fetch("http://10.0.2.2:3000/register", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
