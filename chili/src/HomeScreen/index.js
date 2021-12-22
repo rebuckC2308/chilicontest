@@ -6,7 +6,7 @@ import { RegisterScreen } from "../RegisterScreen/RegisterScreen";
 import { views } from "../Constants/constants";
 import { LoginScreen } from "../LoginScreen/LoginScreen";
 
-export const LandingScreen = () => {
+export const LandingScreen = (navigation) => {
   const [view, setView] = useState(views.HOME_SCREEN);
 
   switch (view) {
@@ -14,10 +14,10 @@ export const LandingScreen = () => {
       return <HomeScreen setView={setView} />;
 
     case views.LOGIN:
-      return <LoginScreen setView={setView} />;
+      return <LoginScreen setView={setView} navigation={navigation} />;
 
     case views.REGISTER:
-      return <RegisterScreen setView={setView} />;
+      return <RegisterScreen setView={setView} navigation={navigation} />;
 
     default:
       return null;

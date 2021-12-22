@@ -6,7 +6,7 @@ import { globalColors } from "../styles";
 import { views } from "../Constants/constants";
 import { handleLogin } from "../Helpers/login";
 
-export const LoginScreen = ({ setView }) => {
+export const LoginScreen = ({ setView, navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,7 +47,7 @@ export const LoginScreen = ({ setView }) => {
           containerStyle={styles.buttonStyle}
           color={globalColors.ORANGE}
           title={"Login"}
-          onPress={() => handleLogin(username, password)}
+          onPress={() => handleLogin(username, password, navigation)}
         />
       </View>
       <View style={styles.buttonContainer}>

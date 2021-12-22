@@ -1,4 +1,4 @@
-export const handleLogin = async (username, password) => {
+export const handleLogin = async (username, password, navigation) => {
   // Example POST method implementation:
   // Default options are marked with *
 
@@ -16,7 +16,7 @@ export const handleLogin = async (username, password) => {
     });
 
     const res = await response.json();
-    console.log(res);
+    navigation.navigation.navigate("Screen X");
     return res; // parses JSON response into native JavaScript objects
   } catch (error) {
     console.error(error);

@@ -19,7 +19,7 @@ const MAX_LEN = 15,
   MIN_LEN = 6,
   PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
-export const RegisterScreen = ({ setView }) => {
+export const RegisterScreen = ({ setView, navigation }) => {
   const [username, setUsername] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isVerifyPasswordVisible, setIsVerifyPasswordVisible] = useState(false);
@@ -96,7 +96,7 @@ export const RegisterScreen = ({ setView }) => {
               title={"Register"}
               buttonStyle={styles.buttonBackgroundColor}
               disabled={isRegisterDisabled}
-              onPress={() => handleRegister(username, password)}
+              onPress={() => handleRegister(username, password, navigation)}
             />
           </View>
           <View style={styles.buttonContainer}>
