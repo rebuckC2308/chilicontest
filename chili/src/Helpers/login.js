@@ -16,7 +16,7 @@ export const handleLogin = async (username, password, navigation) => {
     });
 
     const res = await response.json();
-    navigation.navigation.navigate("Screen X");
+    navigation.navigation.navigate("Starter Screen");
     return res; // parses JSON response into native JavaScript objects
   } catch (error) {
     console.error(error);
