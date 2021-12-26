@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     fontSize: 50,
     display: "flex",
     color: globalColors.LIGHT_GREY,
-    fontFamily: "notoserif",
+    // fontFamily: "notoserif",
   },
 
   titleContainer: {

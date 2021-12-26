@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
-import { Button } from "react-native-elements";
-import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
-import { styles } from "./stylesRegister";
-import SvgComponent from "../TestComponent";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Input } from "react-native-elements";
-import PassMeter from "react-native-passmeter";
-import { LogBox } from "react-native";
-import { globalColors } from "../styles";
-import { handleRegister } from "../Helpers/register";
-import { views } from "../Constants/constants";
+import React, { useState } from 'react';
+import {
+  View, Text, LogBox,
+} from 'react-native';
+import { Button, Input } from 'react-native-elements';
+// eslint-disable-next-line import/no-unresolved
+import Icon from 'react-native-vector-icons/FontAwesome';
+import PassMeter from 'react-native-passmeter';
+import { styles } from './stylesRegister';
+import SvgComponent from '../TestComponent';
+import { handleRegister } from '../Helpers/register';
+import { views } from '../Constants/constants';
 
-LogBox.ignoreLogs(["Warning: ...", "Animated: `useNativeDriver`"]); // Ignore log notification by message
-LogBox.ignoreAllLogs(); //Ignore all log notifications
+LogBox.ignoreLogs(['Warning: ...', 'Animated: `useNativeDriver`']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); // Ignore all log notifications
 
-const MAX_LEN = 15,
-  MIN_LEN = 6,
-  PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
+const MAX_LEN = 15;
+const MIN_LEN = 6;
+const PASS_LABELS = ['Too Short', 'Weak', 'Normal', 'Strong', 'Secure'];
 
-export const RegisterScreen = ({ setView, navigation }) => {
-  const [username, setUsername] = useState("");
+// eslint-disable-next-line import/prefer-default-export
+export function RegisterScreen({ setView, navigation }) {
+  const [username, setUsername] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isVerifyPasswordVisible, setIsVerifyPasswordVisible] = useState(false);
-  const [password, setPassword] = useState("");
-  const [verifyPassword, setVerifyPassword] = useState("");
+  const [password, setPassword] = useState('');
+  const [verifyPassword, setVerifyPassword] = useState('');
 
   const isRegisterDisabled = password !== verifyPassword || password.length < 3;
 
@@ -53,16 +53,16 @@ export const RegisterScreen = ({ setView, navigation }) => {
           onChangeText={(input) => {
             setPassword(input);
           }}
-          rightIcon={
+          rightIcon={(
             <Icon
-              name={isPasswordVisible ? "eye-slash" : "eye"}
+              name={isPasswordVisible ? 'eye-slash' : 'eye'}
               size={24}
               color="white"
               onPress={() => {
                 setIsPasswordVisible(!isPasswordVisible);
               }}
             />
-          }
+          )}
         />
         <Input
           style={styles.input}
@@ -71,16 +71,16 @@ export const RegisterScreen = ({ setView, navigation }) => {
           onChangeText={(input) => {
             setVerifyPassword(input);
           }}
-          rightIcon={
+          rightIcon={(
             <Icon
-              name={isVerifyPasswordVisible ? "eye-slash" : "eye"}
+              name={isVerifyPasswordVisible ? 'eye-slash' : 'eye'}
               size={24}
               color="white"
               onPress={() => {
                 setIsVerifyPasswordVisible(!isVerifyPasswordVisible);
               }}
             />
-          }
+          )}
         />
         <PassMeter
           showLabels
@@ -93,7 +93,7 @@ export const RegisterScreen = ({ setView, navigation }) => {
         <View style={styles.buttons}>
           <View style={styles.buttonContainer}>
             <Button
-              title={"Register"}
+              title="Register"
               buttonStyle={styles.buttonBackgroundColor}
               disabled={isRegisterDisabled}
               onPress={() => handleRegister(username, password, navigation)}
@@ -103,7 +103,7 @@ export const RegisterScreen = ({ setView, navigation }) => {
             <Button
               containerStyle={styles.buttonStyle}
               buttonStyle={styles.buttonBackgroundColor}
-              title={"Home"}
+              title="Home"
               onPress={() => setView(views.HOME_SCREEN)}
             />
           </View>
@@ -111,4 +111,4 @@ export const RegisterScreen = ({ setView, navigation }) => {
       </View>
     </View>
   );
-};
+}

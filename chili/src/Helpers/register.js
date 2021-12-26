@@ -1,27 +1,27 @@
-export const handleRegister = async (username, password, navigation) => {
-  // Example POST method implementation:
-  // Default options are marked with *
+/* eslint-disable import/prefer-default-export */
+// eslint-disable-next-line import/no-unresolved
+import { BASEURL } from '@env';
 
+export const handleRegister = async (username, password, navigation) => {
   try {
-    const response = await fetch("http://10.0.2.2:3000/register", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+    const response = await fetch(`${BASEURL}register`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: username,
-        password: password,
-      }), // body data type must match "Content-Type" header
+        username,
+        password,
+      }),
     });
 
     const res = await response.json();
-    navigation.navigation.navigate("Starter Screen");
+    navigation.navigation.navigate('Starter Screen');
 
     return res; // parses JSON response into native JavaScript objects
   } catch (error) {
-    console.error(error);
-    console.log("Error in  handleRegister");
-    return;
+    // eslint-disable-next-line no-console
+    console.error(`Error in handleRegister ${error}`);
+    return null;
   }
 };

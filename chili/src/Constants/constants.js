@@ -1,6 +1,6 @@
-//represents the three views potnetially to be on
+// eslint-disable-next-line import/prefer-default-export
 export const views = {
-  HOME_SCREEN: "HomeScreen",
-  LOGIN: "Login",
-  REGISTER: "Register",
+  HOME_SCREEN: 'HomeScreen',
+  LOGIN: 'Login',
+  REGISTER: 'Register',
 };

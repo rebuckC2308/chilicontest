@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     color: globalColors.LIGHT_GREY,
-    fontFamily: "notoserif",
+    // fontFamily: "notoserif",
   },
 
   titleContainer: {

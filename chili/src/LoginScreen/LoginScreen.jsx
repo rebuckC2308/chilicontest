@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
-import { styles } from "./stylesLogin";
-import SvgComponent from "../TestComponent";
-import { globalColors } from "../styles";
-import { views } from "../Constants/constants";
-import { handleLogin } from "../Helpers/login";
+import React, { useState } from 'react';
+import {
+  View, Text, TextInput, Button,
+} from 'react-native';
+import { styles } from './stylesLogin';
+import SvgComponent from '../TestComponent';
+import { globalColors } from '../styles';
+import { views } from '../Constants/constants';
+import { handleLogin } from '../Helpers/login';
 
-export const LoginScreen = ({ setView, navigation }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+// eslint-disable-next-line import/prefer-default-export
+export function LoginScreen({ setView, navigation }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
@@ -46,7 +49,7 @@ export const LoginScreen = ({ setView, navigation }) => {
         <Button
           containerStyle={styles.buttonStyle}
           color={globalColors.ORANGE}
-          title={"Login"}
+          title="Login"
           onPress={() => handleLogin(username, password, navigation)}
         />
       </View>
@@ -54,10 +57,10 @@ export const LoginScreen = ({ setView, navigation }) => {
         <Button
           containerStyle={styles.buttonStyle}
           color={globalColors.ORANGE}
-          title={"Register"}
+          title="Register"
           onPress={() => setView(views.REGISTER)}
         />
       </View>
     </View>
   );
-};
+}
