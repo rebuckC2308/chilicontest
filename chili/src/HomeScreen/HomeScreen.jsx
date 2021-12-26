@@ -1,12 +1,13 @@
-import * as React from "react";
-import { Button } from "react-native-elements";
-import { View, Text } from "react-native";
-import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
-import { styles } from "./styles";
-import SvgComponent from "../TestComponent";
-import { views } from "./index";
+import * as React from 'react';
+import { Button } from 'react-native-elements';
+import { View, Text } from 'react-native';
+import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import { styles } from './styles';
+import SvgComponent from '../TestComponent';
+import { views } from '../Constants/constants';
 
-export const HomeScreen = ({ setView }) => {
+// eslint-disable-next-line import/prefer-default-export
+export function HomeScreen({ setView }) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -21,8 +22,8 @@ export const HomeScreen = ({ setView }) => {
       <View style={styles.buttonContainer}>
         <Button
           icon={<MaterialCommunityIcons name="login" size={24} color="white" />}
-          title={"Log In"}
-          raised={true}
+          title="Log In"
+          raised
           containerStyle={styles.buttonStyle}
           buttonStyle={styles.buttonBackgroundColor}
           titleStyle={styles.gapIcon}
@@ -30,8 +31,8 @@ export const HomeScreen = ({ setView }) => {
         />
         <Button
           icon={<Entypo name="bowl" size={24} color="white" />}
-          title={"Register"}
-          rasied={true}
+          title="Register"
+          rasied
           containerStyle={styles.buttonStyle}
           buttonStyle={styles.buttonBackgroundColor}
           titleStyle={styles.gapIcon}
@@ -40,4 +41,4 @@ export const HomeScreen = ({ setView }) => {
       </View>
     </View>
   );
-};
+}

@@ -2,26 +2,11 @@ import { StyleSheet } from "react-native";
 import { globalColors } from "../styles";
 
 export const styles = StyleSheet.create({
-  buttonStyle: {
-    width: 200,
-    marginVertical: 10,
-  },
-
-  buttonBackgroundColor: {
-    backgroundColor: globalColors.ORANGE,
-  },
-
   container: {
     height: "100%",
-    display: "flex",
     backgroundColor: globalColors.DARK_GREY,
-    justifyContent: "flex-end",
-  },
-
-  buttonContainer: {
+    justifyContent: "space-around",
     display: "flex",
-    alignItems: "center",
-    marginBottom: 100,
   },
 
   gapIcon: {
@@ -31,12 +16,14 @@ export const styles = StyleSheet.create({
   logo: {
     width: 60,
     height: 60,
+
     display: "flex",
   },
 
   titleText: {
     fontSize: 50,
     display: "flex",
+    justifyContent: "center",
     color: globalColors.LIGHT_GREY,
     // fontFamily: "notoserif",
   },
@@ -45,7 +32,37 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "flex-start",
-    marginBottom: 250,
+    alignItems: "center",
+    flexGrow: 1,
+    width: "100%",
+  },
+
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: globalColors.LIGHT_GREY,
+  },
+
+  inputContainer: {
+    flexGrow: 1,
+  },
+
+  loginButton: {
+    marginTop: 50,
+  },
+
+  buttonContainer: {
+    display: "flex",
+    alignSelf: "center",
+    marginHorizontal: 16,
+    marginBottom: 30,
+    width: 200,
+    alignItems: "stretch",
+  },
+
+  buttons: {
+    marginBottom: 100,
   },
 });
