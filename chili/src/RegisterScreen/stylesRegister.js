@@ -2,22 +2,23 @@ import { StyleSheet } from "react-native";
 import { globalColors } from "../styles";
 
 export const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    backgroundColor: globalColors.DARK_GREY,
-    justifyContent: "space-around",
-    display: "flex",
-  },
+  //   screenContainer: {
+  //     flex: 1,
+  //   },
 
-  gapIcon: {
-    marginLeft: 10,
+  container: {
+    backgroundColor: globalColors.DARK_GREY,
+    flexGrow: 1,
+    borderColor: "green",
+    borderWidth: 10,
   },
 
   logo: {
     width: 60,
     height: 60,
-
     display: "flex",
+    borderColor: "red",
+    borderWidth: 4,
   },
 
   titleText: {
@@ -26,6 +27,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     color: globalColors.LIGHT_GREY,
     fontFamily: "notoserif",
+    borderColor: "blue",
+    borderWidth: 4,
   },
 
   titleContainer: {
@@ -33,30 +36,38 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    flexGrow: 1,
     width: "100%",
     marginTop: 100,
+    borderColor: "pink",
+    borderWidth: 8,
   },
 
   input: {
     color: globalColors.LIGHT_GREY,
+    borderColor: "purple",
+    borderWidth: 2,
   },
 
   inputContainer: {
-    flexGrow: 1,
     marginTop: 75,
+    borderColor: "purple",
+    borderWidth: 8,
   },
 
-  buttonContainer: {
+  buttons: {
     display: "flex",
     alignSelf: "center",
     marginBottom: 30,
     width: 200,
     alignItems: "stretch",
+    borderColor: "orange",
+    borderWidth: 4,
   },
 
-  buttons: {
-    marginTop: 50,
+  buttonContainer: {
+    borderColor: "orange",
+    borderWidth: 2,
+    marginBottom: 24.5,
   },
 
   buttonBackgroundColor: {

@@ -24,4 +24,3 @@ export const handleLogin = async (username, password, navigation) => {
     return;
   }
 };
-console.log("Login Pressed");
