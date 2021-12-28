@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { globalColors } from "../styles";
+import { StyleSheet } from 'react-native';
+import { globalColors } from '../styles';
 
 export const styles = StyleSheet.create({
   buttonStyle: {
@@ -12,15 +12,15 @@ export const styles = StyleSheet.create({
   },
 
   container: {
-    height: "100%",
-    display: "flex",
+    height: '100%',
+    display: 'flex',
     backgroundColor: globalColors.DARK_GREY,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
 
   buttonContainer: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: 100,
   },
 
@@ -31,21 +31,21 @@ export const styles = StyleSheet.create({
   logo: {
     width: 60,
     height: 60,
-    display: "flex",
+    display: 'flex',
   },
 
   titleText: {
     fontSize: 50,
-    display: "flex",
+    display: 'flex',
     color: globalColors.LIGHT_GREY,
     // fontFamily: "notoserif",
   },
 
   titleContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "flex-start",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     marginBottom: 250,
   },
 });
