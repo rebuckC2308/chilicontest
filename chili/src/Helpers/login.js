@@ -23,6 +23,7 @@ export const handleLogin = async (username, password, navigation) => {
     navigation.navigation.navigate('Starter Screen');
     return res; // parses JSON response into native JavaScript objects
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(`Error in handleRegister ${error}`);
     return null;
   }
