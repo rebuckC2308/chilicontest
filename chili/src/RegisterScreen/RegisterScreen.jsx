@@ -10,6 +10,7 @@ import { styles } from './stylesRegister';
 import SvgComponent from '../TestComponent';
 import { handleRegister } from '../Helpers/register';
 import { views } from '../Constants/constants';
+import { ErrorModal } from '../Modal/ErrorModal';
 
 LogBox.ignoreLogs(['Warning: ...', 'Animated: `useNativeDriver`']); // Ignore log notification by message
 LogBox.ignoreAllLogs(); // Ignore all log notifications
@@ -25,11 +26,18 @@ export function RegisterScreen({ setView, navigation }) {
   const [isVerifyPasswordVisible, setIsVerifyPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
+  const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
+  const [errorModalText, setErrorModalText] = useState('');
 
   const isRegisterDisabled = password !== verifyPassword || password.length < 3;
 
   return (
     <View style={styles.container}>
+      <ErrorModal
+        setShouldDisplayErrorModal={setShouldDisplayErrorModal}
+        shouldDisplayErrorModal={shouldDisplayErrorModal}
+        errorModalText={errorModalText}
+      />
       <View style={styles.titleContainer}>
         <View>
           <Text style={styles.titleText}>Chili Cookoff</Text>
@@ -96,7 +104,15 @@ export function RegisterScreen({ setView, navigation }) {
               title="Register"
               buttonStyle={styles.buttonBackgroundColor}
               disabled={isRegisterDisabled}
-              onPress={() => handleRegister(username, password, navigation)}
+              onPress={() => {
+                handleRegister(
+                  username,
+                  password,
+                  navigation,
+                  setShouldDisplayErrorModal,
+                  setErrorModalText,
+                );
+              }}
             />
           </View>
           <View style={styles.buttonContainer}>
