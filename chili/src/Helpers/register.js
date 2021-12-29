@@ -20,6 +20,7 @@ export const handleRegister = async (
         password,
       }),
     });
+
     const { status } = response;
     const res = await response.json();
 
@@ -27,11 +28,9 @@ export const handleRegister = async (
       case 201:
         navigation.navigation.navigate('Starter Screen');
         return;
-      case 409:
+      default:
         setErrorModalText(res.errorMessage);
         setShouldDisplayErrorModal(true);
-        break;
-      default:
         break;
     }
   } catch (error) {
