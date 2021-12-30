@@ -2,9 +2,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { BASEURL } from '@env';
 
-export const handleRegister = async (username, password, navigation) => {
+export const handleRegister = async (
+  username,
+  password,
+  navigation,
+  setShouldDisplayErrorModal,
+  setErrorModalText,
+) => {
   try {
-    const response = await fetch(`${BASEURL}register`, {
+    const response = await fetch(`${BASEURL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -15,13 +21,20 @@ export const handleRegister = async (username, password, navigation) => {
       }),
     });
 
+    const { status } = response;
     const res = await response.json();
-    navigation.navigation.navigate('Starter Screen');
 
-    return res; // parses JSON response into native JavaScript objects
+    switch (status) {
+      case 201:
+        navigation.navigation.navigate('Starter Screen');
+        return;
+      default:
+        setErrorModalText(res.errorMessage);
+        setShouldDisplayErrorModal(true);
+        break;
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Error in handleRegister ${error}`);
-    return null;
   }
 };
