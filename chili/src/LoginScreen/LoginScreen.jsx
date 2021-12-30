@@ -7,14 +7,22 @@ import SvgComponent from '../TestComponent';
 import { globalColors } from '../styles';
 import { views } from '../Constants/constants';
 import { handleLogin } from '../Helpers/login';
+import { ErrorModal } from '../Modal/ErrorModal';
 
 // eslint-disable-next-line import/prefer-default-export
 export function LoginScreen({ setView, navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
+  const [errorModalText, setErrorModalText] = useState('');
 
   return (
     <View style={styles.container}>
+      <ErrorModal
+        setShouldDisplayErrorModal={setShouldDisplayErrorModal}
+        shouldDisplayErrorModal={shouldDisplayErrorModal}
+        errorModalText={errorModalText}
+      />
       <View style={styles.titleContainer}>
         <View>
           <Text style={styles.titleText}>Chili Cookoff</Text>
@@ -37,6 +45,7 @@ export function LoginScreen({ setView, navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Password"
+          secureTextEntry
           autoCapitalize="none"
           autoComplete="off"
           onChangeText={(input) => {
@@ -50,7 +59,13 @@ export function LoginScreen({ setView, navigation }) {
           containerStyle={styles.buttonStyle}
           color={globalColors.ORANGE}
           title="Login"
-          onPress={() => handleLogin(username, password, navigation)}
+          onPress={() => handleLogin(
+            username,
+            password,
+            navigation,
+            setShouldDisplayErrorModal,
+            setErrorModalText,
+          )}
         />
       </View>
       <View style={styles.buttonContainer}>
