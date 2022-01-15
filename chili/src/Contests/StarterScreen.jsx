@@ -39,4 +39,5 @@ export function StarterScreen() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 const style = StyleSheet.create({});
