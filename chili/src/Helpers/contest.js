@@ -6,6 +6,7 @@ export const createContest = async ({ setIsLoading }) => {
     // loading spinner
     setIsLoading(true);
 
+    // eslint-disable-next-line no-unused-vars
     const response = await fetch(`${BASEURL}/createContest`, {
       method: 'POST',
       headers: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ActivityIndicator, StyleSheet, Text, View,
+  ActivityIndicator, StyleSheet,
 } from 'react-native';
 import { globalColors } from '../styles';
 
@@ -10,4 +10,5 @@ export function LoadingSpinner() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 const styles = StyleSheet.create({});
