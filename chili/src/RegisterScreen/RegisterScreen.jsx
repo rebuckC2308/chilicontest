@@ -115,9 +115,8 @@ export function RegisterScreen({ setView, navigation }) {
             )}
         </View>
       </KeyboardAvoidingView>
-
       <View style={styles.buttons}>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainers}>
           <Button
             title="Register"
             buttonStyle={styles.buttonBackgroundColor}
@@ -134,7 +133,7 @@ export function RegisterScreen({ setView, navigation }) {
             }}
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainers}>
           <Button
             containerStyle={styles.buttonStyle}
             buttonStyle={styles.buttonBackgroundColor}
