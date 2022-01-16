@@ -65,4 +65,8 @@ export const styles = StyleSheet.create({
   buttons: {
     marginBottom: 100,
   },
+
+  spinner: {
+    marginBottom: 150,
+  },
 });

@@ -8,11 +8,13 @@ export const handleLogin = async (
   navigation,
   setShouldDisplayErrorModal,
   setErrorModalText,
+  setIsLoading,
 ) => {
   // Example POST method implementation:
   // Default options are marked with *
 
   try {
+    setIsLoading(true);
     const response = await fetch(`${BASEURL}/login`, {
       method: 'POST',
       headers: {
@@ -30,10 +32,12 @@ export const handleLogin = async (
     switch (status) {
       case 200:
         navigation.navigation.navigate('Starter Screen');
+        setIsLoading(false);
         return;
       default:
         setErrorModalText(res.errorMessage);
         setShouldDisplayErrorModal(true);
+        setIsLoading(false);
         break;
     }
   } catch (error) {

@@ -8,8 +8,10 @@ export const handleRegister = async (
   navigation,
   setShouldDisplayErrorModal,
   setErrorModalText,
+  setIsLoading,
 ) => {
   try {
+    setIsLoading(true);
     const response = await fetch(`${BASEURL}/register`, {
       method: 'POST',
       headers: {
@@ -27,10 +29,12 @@ export const handleRegister = async (
     switch (status) {
       case 201:
         navigation.navigation.navigate('Starter Screen');
+        setIsLoading(false);
         return;
       default:
         setErrorModalText(res.errorMessage);
         setShouldDisplayErrorModal(true);
+        setIsLoading(false);
         break;
     }
   } catch (error) {

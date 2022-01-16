@@ -11,6 +11,7 @@ import SvgComponent from '../TestComponent';
 import { handleRegister } from '../Helpers/register';
 import { views } from '../Constants/constants';
 import { ErrorModal } from '../Modal/ErrorModal';
+import { LoadingSpinner } from '../Components/LoadingSpinner';
 
 LogBox.ignoreLogs(['Warning: ...', 'Animated: `useNativeDriver`']); // Ignore log notification by message
 LogBox.ignoreAllLogs(); // Ignore all log notifications
@@ -28,6 +29,7 @@ export function RegisterScreen({ setView, navigation }) {
   const [verifyPassword, setVerifyPassword] = useState('');
   const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
   const [errorModalText, setErrorModalText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const isRegisterDisabled = password !== verifyPassword || password.length < 3;
 
@@ -47,56 +49,68 @@ export function RegisterScreen({ setView, navigation }) {
         </View>
       </View>
       <View style={styles.inputContainer}>
-        <Input
-          inputStyle={styles.input}
-          placeholder="Username"
-          onChangeText={(input) => {
-            setUsername(input);
-          }}
-        />
-        <Input
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={!isPasswordVisible}
-          onChangeText={(input) => {
-            setPassword(input);
-          }}
-          rightIcon={(
-            <Icon
-              name={isPasswordVisible ? 'eye-slash' : 'eye'}
-              size={24}
-              color="white"
-              onPress={() => {
-                setIsPasswordVisible(!isPasswordVisible);
-              }}
-            />
+        {isLoading
+          ? (
+            <View style={styles.spinner}>
+              <LoadingSpinner />
+            </View>
+          )
+
+          : (
+            <>
+              <Input
+                inputStyle={styles.input}
+                placeholder="Username"
+                onChangeText={(input) => {
+                  setUsername(input);
+                }}
+              />
+              <Input
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry={!isPasswordVisible}
+                onChangeText={(input) => {
+                  setPassword(input);
+                }}
+                rightIcon={(
+                  <Icon
+                    name={isPasswordVisible ? 'eye-slash' : 'eye'}
+                    size={24}
+                    color="white"
+                    onPress={() => {
+                      setIsPasswordVisible(!isPasswordVisible);
+                    }}
+                  />
           )}
-        />
-        <Input
-          style={styles.input}
-          placeholder="Verify Password"
-          secureTextEntry={!isVerifyPasswordVisible}
-          onChangeText={(input) => {
-            setVerifyPassword(input);
-          }}
-          rightIcon={(
-            <Icon
-              name={isVerifyPasswordVisible ? 'eye-slash' : 'eye'}
-              size={24}
-              color="white"
-              onPress={() => {
-                setIsVerifyPasswordVisible(!isVerifyPasswordVisible);
-              }}
-            />
+              />
+              <Input
+                style={styles.input}
+                placeholder="Verify Password"
+                secureTextEntry={!isVerifyPasswordVisible}
+                onChangeText={(input) => {
+                  setVerifyPassword(input);
+                }}
+                rightIcon={(
+                  <Icon
+                    name={isVerifyPasswordVisible ? 'eye-slash' : 'eye'}
+                    size={24}
+                    color="white"
+                    onPress={() => {
+                      setIsVerifyPasswordVisible(!isVerifyPasswordVisible);
+                    }}
+                  />
           )}
-        />
-        <PassMeter
-          showLabels
-          password={password}
-          maxLength={MAX_LEN}
-          minLength={MIN_LEN}
-          labels={PASS_LABELS}
-        />
+              />
+              <PassMeter
+                showLabels
+                password={password}
+                maxLength={MAX_LEN}
+                minLength={MIN_LEN}
+                labels={PASS_LABELS}
+              />
+
+            </>
+          )}
 
         <View style={styles.buttons}>
           <View style={styles.buttonContainer}>
@@ -111,6 +125,7 @@ export function RegisterScreen({ setView, navigation }) {
                   navigation,
                   setShouldDisplayErrorModal,
                   setErrorModalText,
+                  setIsLoading,
                 );
               }}
             />

@@ -62,4 +62,8 @@ export const styles = StyleSheet.create({
   buttonBackgroundColor: {
     backgroundColor: globalColors.ORANGE,
   },
+
+  spinner: {
+    marginBottom: 75,
+  },
 });

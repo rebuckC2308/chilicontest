@@ -8,6 +8,7 @@ import { globalColors } from '../styles';
 import { views } from '../Constants/constants';
 import { handleLogin } from '../Helpers/login';
 import { ErrorModal } from '../Modal/ErrorModal';
+import { LoadingSpinner } from '../Components/LoadingSpinner';
 
 // eslint-disable-next-line import/prefer-default-export
 export function LoginScreen({ setView, navigation }) {
@@ -15,6 +16,7 @@ export function LoginScreen({ setView, navigation }) {
   const [password, setPassword] = useState('');
   const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
   const [errorModalText, setErrorModalText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -32,27 +34,34 @@ export function LoginScreen({ setView, navigation }) {
         </View>
       </View>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username or Email"
-          autoCapitalize="none"
-          autoComplete="off"
-          onChangeText={(input) => {
-            setUsername(input);
-          }}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          autoCapitalize="none"
-          autoComplete="off"
-          onChangeText={(input) => {
-            setPassword(input);
-          }}
-        />
-      </View>
+      {isLoading ? (
+        <View style={styles.spinner}>
+          <LoadingSpinner />
+        </View>
+      )
+        : (
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Username or Email"
+              autoCapitalize="none"
+              autoComplete="off"
+              onChangeText={(input) => {
+                setUsername(input);
+              }}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="off"
+              onChangeText={(input) => {
+                setPassword(input);
+              }}
+            />
+          </View>
+        )}
 
       <View style={styles.buttonContainer}>
         <Button
@@ -65,6 +74,7 @@ export function LoginScreen({ setView, navigation }) {
             navigation,
             setShouldDisplayErrorModal,
             setErrorModalText,
+            setIsLoading,
           )}
         />
       </View>
