@@ -104,7 +104,7 @@ export function RegisterScreen({ setView, navigation }) {
           )}
                 />
                 <PassMeter
-                  showLabels
+                  showLabels={false}
                   password={password}
                   maxLength={MAX_LEN}
                   minLength={MIN_LEN}

@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
   inputContainer: {
     flexGrow: 1,
     marginTop: 55,
+    marginBottom: 20,
 
   },
 
@@ -56,7 +57,7 @@ export const styles = StyleSheet.create({
   },
 
   buttons: {
-    marginTop: 50,
+    marginTop: 25,
   },
 
   buttonBackgroundColor: {
