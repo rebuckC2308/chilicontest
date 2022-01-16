@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, LogBox,
+  View, Text, LogBox, KeyboardAvoidingView,
 } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 // eslint-disable-next-line import/no-unresolved
@@ -40,106 +40,110 @@ export function RegisterScreen({ setView, navigation }) {
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
-      <View style={styles.titleContainer}>
-        <View>
-          <Text style={styles.titleText}>Chili Cookoff</Text>
-        </View>
-        <View style={styles.logo}>
-          <SvgComponent />
-        </View>
-      </View>
-      <View style={styles.inputContainer}>
-        {isLoading
-          ? (
-            <View style={styles.spinner}>
-              <LoadingSpinner />
-            </View>
-          )
+      <KeyboardAvoidingView behavior="position">
 
-          : (
-            <>
-              <Input
-                inputStyle={styles.input}
-                placeholder="Username"
-                onChangeText={(input) => {
-                  setUsername(input);
-                }}
-              />
-              <Input
-                style={styles.input}
-                placeholder="Password"
-                secureTextEntry={!isPasswordVisible}
-                onChangeText={(input) => {
-                  setPassword(input);
-                }}
-                rightIcon={(
-                  <Icon
-                    name={isPasswordVisible ? 'eye-slash' : 'eye'}
-                    size={24}
-                    color="white"
-                    onPress={() => {
-                      setIsPasswordVisible(!isPasswordVisible);
-                    }}
-                  />
-          )}
-              />
-              <Input
-                style={styles.input}
-                placeholder="Verify Password"
-                secureTextEntry={!isVerifyPasswordVisible}
-                onChangeText={(input) => {
-                  setVerifyPassword(input);
-                }}
-                rightIcon={(
-                  <Icon
-                    name={isVerifyPasswordVisible ? 'eye-slash' : 'eye'}
-                    size={24}
-                    color="white"
-                    onPress={() => {
-                      setIsVerifyPasswordVisible(!isVerifyPasswordVisible);
-                    }}
-                  />
-          )}
-              />
-              <PassMeter
-                showLabels
-                password={password}
-                maxLength={MAX_LEN}
-                minLength={MIN_LEN}
-                labels={PASS_LABELS}
-              />
-
-            </>
-          )}
-
-        <View style={styles.buttons}>
-          <View style={styles.buttonContainer}>
-            <Button
-              title="Register"
-              buttonStyle={styles.buttonBackgroundColor}
-              disabled={isRegisterDisabled}
-              onPress={() => {
-                handleRegister(
-                  username,
-                  password,
-                  navigation,
-                  setShouldDisplayErrorModal,
-                  setErrorModalText,
-                  setIsLoading,
-                );
-              }}
-            />
+        <View style={styles.titleContainer}>
+          <View>
+            <Text style={styles.titleText}>Chili Cookoff</Text>
           </View>
-          <View style={styles.buttonContainer}>
-            <Button
-              containerStyle={styles.buttonStyle}
-              buttonStyle={styles.buttonBackgroundColor}
-              title="Home"
-              onPress={() => setView(views.HOME_SCREEN)}
-            />
+          <View style={styles.logo}>
+            <SvgComponent />
           </View>
+        </View>
+        <View style={styles.inputContainer}>
+          {isLoading
+            ? (
+              <View style={styles.spinner}>
+                <LoadingSpinner />
+              </View>
+            )
+
+            : (
+              <>
+                <Input
+                  inputStyle={styles.input}
+                  placeholder="Username"
+                  onChangeText={(input) => {
+                    setUsername(input);
+                  }}
+                />
+                <Input
+                  style={styles.input}
+                  placeholder="Password"
+                  secureTextEntry={!isPasswordVisible}
+                  onChangeText={(input) => {
+                    setPassword(input);
+                  }}
+                  rightIcon={(
+                    <Icon
+                      name={isPasswordVisible ? 'eye-slash' : 'eye'}
+                      size={24}
+                      color="white"
+                      onPress={() => {
+                        setIsPasswordVisible(!isPasswordVisible);
+                      }}
+                    />
+          )}
+                />
+                <Input
+                  style={styles.input}
+                  placeholder="Verify Password"
+                  secureTextEntry={!isVerifyPasswordVisible}
+                  onChangeText={(input) => {
+                    setVerifyPassword(input);
+                  }}
+                  rightIcon={(
+                    <Icon
+                      name={isVerifyPasswordVisible ? 'eye-slash' : 'eye'}
+                      size={24}
+                      color="white"
+                      onPress={() => {
+                        setIsVerifyPasswordVisible(!isVerifyPasswordVisible);
+                      }}
+                    />
+          )}
+                />
+                <PassMeter
+                  showLabels
+                  password={password}
+                  maxLength={MAX_LEN}
+                  minLength={MIN_LEN}
+                  labels={PASS_LABELS}
+                />
+
+              </>
+            )}
+        </View>
+      </KeyboardAvoidingView>
+
+      <View style={styles.buttons}>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Register"
+            buttonStyle={styles.buttonBackgroundColor}
+            disabled={isRegisterDisabled}
+            onPress={() => {
+              handleRegister(
+                username,
+                password,
+                navigation,
+                setShouldDisplayErrorModal,
+                setErrorModalText,
+                setIsLoading,
+              );
+            }}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            containerStyle={styles.buttonStyle}
+            buttonStyle={styles.buttonBackgroundColor}
+            title="Home"
+            onPress={() => setView(views.HOME_SCREEN)}
+          />
         </View>
       </View>
     </View>
+
   );
 }
