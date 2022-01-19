@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: globalColors.DARK_GREY,
-    justifyContent: 'space-around',
     display: 'flex',
   },
 
@@ -46,24 +45,23 @@ export const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    flexGrow: 1,
+    marginBottom: 100,
   },
 
-  loginButton: {
-    marginTop: 50,
-  },
-
-  buttonContainer: {
+  buttonContainers: {
     display: 'flex',
     alignSelf: 'center',
-    marginHorizontal: 16,
-    marginBottom: 30,
+    marginTop: 20,
     width: 200,
     alignItems: 'stretch',
   },
 
   buttons: {
-    marginBottom: 100,
+    marginBottom: 50,
+  },
+
+  buttonBackgroundColor: {
+    backgroundColor: globalColors.ORANGE,
   },
 
   spinner: {

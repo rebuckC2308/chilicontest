@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import {
-  View, Text, TextInput, Button,
+  View, Text,
 } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+// eslint-disable-next-line import/no-unresolved
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './stylesLogin';
 import SvgComponent from '../TestComponent';
 import { globalColors } from '../styles';
@@ -17,6 +20,7 @@ export function LoginScreen({ setView, navigation }) {
   const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
   const [errorModalText, setErrorModalText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -41,50 +45,60 @@ export function LoginScreen({ setView, navigation }) {
       )
         : (
           <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              placeholder="Username or Email"
+            <Input
+              placeholder="Username"
               autoCapitalize="none"
               autoComplete="off"
               onChangeText={(input) => {
                 setUsername(input);
               }}
             />
-            <TextInput
-              style={styles.input}
+            <Input
               placeholder="Password"
-              secureTextEntry
+              secureTextEntry={!isPasswordVisible}
               autoCapitalize="none"
               autoComplete="off"
               onChangeText={(input) => {
                 setPassword(input);
               }}
+              rightIcon={(
+                <Icon
+                  name={isPasswordVisible ? 'eye-slash' : 'eye'}
+                  size={24}
+                  color="white"
+                  onPress={() => {
+                    setIsPasswordVisible(!isPasswordVisible);
+                  }}
+                />
+      )}
             />
           </View>
         )}
+      <View style={styles.buttons}>
+        <View style={styles.buttonContainers}>
+          <Button
+            buttonStyle={styles.buttonBackgroundColor}
+            color={globalColors.ORANGE}
+            title="Login"
+            onPress={() => handleLogin(
+              username,
+              password,
+              navigation,
+              setShouldDisplayErrorModal,
+              setErrorModalText,
+              setIsLoading,
+            )}
+          />
+        </View>
+        <View style={styles.buttonContainers}>
+          <Button
+            buttonStyle={styles.buttonBackgroundColor}
+            color={globalColors.ORANGE}
+            title="Register"
+            onPress={() => setView(views.REGISTER)}
+          />
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <Button
-          containerStyle={styles.buttonStyle}
-          color={globalColors.ORANGE}
-          title="Login"
-          onPress={() => handleLogin(
-            username,
-            password,
-            navigation,
-            setShouldDisplayErrorModal,
-            setErrorModalText,
-            setIsLoading,
-          )}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          containerStyle={styles.buttonStyle}
-          color={globalColors.ORANGE}
-          title="Register"
-          onPress={() => setView(views.REGISTER)}
-        />
       </View>
     </View>
   );
