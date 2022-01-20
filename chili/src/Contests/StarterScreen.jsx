@@ -15,7 +15,7 @@ function MainContent({ setIsLoading }) {
         containerStyle={styles.buttonStyle}
         color={globalColors.ORANGE}
         title="Create A Contest"
-        onPress={() => { createContest({ setIsLoading }); }}
+        onPress={() => { createContest({ setIsLoading, username: 'Test1' }); }}
       />
       <View style={styles.join}>
         <Text style={styles.text}> Or Join A Contest</Text>
