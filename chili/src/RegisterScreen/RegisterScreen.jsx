@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View, Text, LogBox, KeyboardAvoidingView,
 } from 'react-native';
@@ -12,6 +12,7 @@ import { handleRegister } from '../Helpers/register';
 import { views } from '../Constants/constants';
 import { ErrorModal } from '../Modal/ErrorModal';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
+import { UserDetailsContext } from '../Contexts/UserContext';
 
 LogBox.ignoreLogs(['Warning: ...', 'Animated: `useNativeDriver`']); // Ignore log notification by message
 LogBox.ignoreAllLogs(); // Ignore all log notifications
@@ -22,7 +23,9 @@ const PASS_LABELS = ['Too Short', 'Weak', 'Normal', 'Strong', 'Secure'];
 
 // eslint-disable-next-line import/prefer-default-export
 export function RegisterScreen({ setView, navigation }) {
-  const [username, setUsername] = useState('');
+  const { setGlobalUserName } = useContext(UserDetailsContext);
+
+  const [localUsername, setLocalUsername] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isVerifyPasswordVisible, setIsVerifyPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
@@ -64,7 +67,7 @@ export function RegisterScreen({ setView, navigation }) {
                   inputStyle={styles.input}
                   placeholder="Username"
                   onChangeText={(input) => {
-                    setUsername(input);
+                    setLocalUsername(input);
                   }}
                 />
                 <Input
@@ -123,12 +126,13 @@ export function RegisterScreen({ setView, navigation }) {
             disabled={isRegisterDisabled}
             onPress={() => {
               handleRegister(
-                username,
+                localUsername,
                 password,
                 navigation,
                 setShouldDisplayErrorModal,
                 setErrorModalText,
                 setIsLoading,
+                setGlobalUserName,
               );
             }}
           />

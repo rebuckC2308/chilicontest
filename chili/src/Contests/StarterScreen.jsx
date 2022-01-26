@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View, Text, StyleSheet, Button, TextInput,
 } from 'react-native';
@@ -7,8 +7,11 @@ import { styles } from './contestStyles';
 import { globalColors } from '../styles';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { createContest } from '../Helpers/contest';
+import { UserDetailsContext } from '../Contexts/UserContext';
 
 function MainContent({ setIsLoading }) {
+  const { globalUserName } = useContext(UserDetailsContext);
+  console.log({ globalUserName });
   return (
     <View>
       <Button

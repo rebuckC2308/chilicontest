@@ -9,6 +9,7 @@ export const handleRegister = async (
   setShouldDisplayErrorModal,
   setErrorModalText,
   setIsLoading,
+  setGlobalUserName,
 ) => {
   try {
     setIsLoading(true);
@@ -30,6 +31,7 @@ export const handleRegister = async (
       case 201:
         navigation.navigation.navigate('Starter Screen');
         setIsLoading(false);
+        setGlobalUserName(username);
         return;
       default:
         setErrorModalText(res.errorMessage);
