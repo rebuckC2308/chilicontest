@@ -1,13 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
+// import React, { useState, useContext } from 'react';
 import {
   View, Text, StyleSheet, Button,
 } from 'react-native';
-import { ErrorModal } from '../Modal/ErrorModal';
 import SvgComponent from '../TestComponent';
 import { styles } from './contestStyles';
 import { globalColors } from '../styles';
-import { LoadingSpinner } from '../Components/LoadingSpinner';
-import { UserDetailsContext } from '../Contexts/UserContext';
+// import { ErrorModal } from '../Modal/ErrorModal';
+// import { LoadingSpinner } from '../Components/LoadingSpinner';
+// import { UserDetailsContext } from '../Contexts/UserContext';
 
 const contests = 0;
 
@@ -24,7 +25,7 @@ function EntriesContent() {
 function ContestContentComponent() {
   return (
     <View>
-      <Text style={styles.text}>It looks like you don't have any entries!</Text>
+      <Text style={styles.text}>It looks like you do not have any entries!</Text>
       <View style={styles.buttonContainer}>
         <Button
           color={globalColors.ORANGE}
@@ -54,4 +55,5 @@ export function ContestScreen() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 const style = StyleSheet.create({});
