@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View, Text,
 } from 'react-native';
@@ -12,10 +12,13 @@ import { views } from '../Constants/constants';
 import { handleLogin } from '../Helpers/login';
 import { ErrorModal } from '../Modal/ErrorModal';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
+import { UserDetailsContext } from '../Contexts/UserContext';
 
 // eslint-disable-next-line import/prefer-default-export
 export function LoginScreen({ setView, navigation }) {
-  const [username, setUsername] = useState('');
+  const { setGlobalUserName } = useContext(UserDetailsContext);
+
+  const [localUsername, setLocalUsername] = useState('');
   const [password, setPassword] = useState('');
   const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
   const [errorModalText, setErrorModalText] = useState('');
@@ -50,7 +53,7 @@ export function LoginScreen({ setView, navigation }) {
               autoCapitalize="none"
               autoComplete="off"
               onChangeText={(input) => {
-                setUsername(input);
+                setLocalUsername(input);
               }}
             />
             <Input
@@ -81,12 +84,13 @@ export function LoginScreen({ setView, navigation }) {
             color={globalColors.ORANGE}
             title="Login"
             onPress={() => handleLogin(
-              username,
+              localUsername,
               password,
               navigation,
               setShouldDisplayErrorModal,
               setErrorModalText,
               setIsLoading,
+              setGlobalUserName,
             )}
           />
         </View>

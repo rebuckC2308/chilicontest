@@ -9,6 +9,7 @@ export const handleLogin = async (
   setShouldDisplayErrorModal,
   setErrorModalText,
   setIsLoading,
+  setGlobalUserName,
 ) => {
   // Example POST method implementation:
   // Default options are marked with *
@@ -33,6 +34,7 @@ export const handleLogin = async (
       case 200:
         navigation.navigation.navigate('Starter Screen');
         setIsLoading(false);
+        setGlobalUserName(username);
         return;
       default:
         setErrorModalText(res.errorMessage);

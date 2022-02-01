@@ -1,7 +1,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { BASEURL } from '@env';
 
-export const createContest = async ({ setIsLoading }) => {
+export const createContest = async ({
+  setIsLoading,
+  globalUserName,
+  navigation,
+  setShouldDisplayErrorModal,
+  setErrorModalText,
+  setCurrentContestAdmin,
+  setCurrentContestID,
+}) => {
   try {
     // loading spinner
     setIsLoading(true);
@@ -13,9 +21,28 @@ export const createContest = async ({ setIsLoading }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: 'chiliDOG',
+        username: globalUserName,
       }),
     });
+    const { status } = response;
+    const { admin, contestId, errorMessage } = await response.json();
+
+    switch (status) {
+      case 201:
+        navigation.navigate('Contest Screen');
+        setIsLoading(false);
+        setCurrentContestID(contestId);
+        setCurrentContestAdmin(admin);
+
+        return;
+      default:
+        setErrorModalText(errorMessage);
+        setShouldDisplayErrorModal(true);
+        setIsLoading(false);
+        setCurrentContestID('');
+        setCurrentContestAdmin('');
+        break;
+    }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
