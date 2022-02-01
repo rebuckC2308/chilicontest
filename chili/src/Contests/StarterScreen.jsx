@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { ErrorModal } from '../Modal/ErrorModal';
 import SvgComponent from '../TestComponent';
-import { styles } from './contestStyles';
+import { styles } from './starterStyles';
 import { globalColors } from '../styles';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { createContest } from '../Helpers/contest';
@@ -16,6 +16,7 @@ function MainContent({ setIsLoading, navigation }) {
     setShouldDisplayErrorModal, setErrorModalText, setCurrentContestAdmin,
     setCurrentContestID, currentContestAdmin, currentContestID,
   } = useContext(UserDetailsContext);
+  // eslint-disable-next-line no-console
   console.log({
     globalUserName,
     shouldDisplayErrorModal,
@@ -32,6 +33,7 @@ function MainContent({ setIsLoading, navigation }) {
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
+      <Text style={styles.welcomeText}>{`Welcome ${globalUserName}!`}</Text>
       <Button
         containerStyle={styles.buttonStyle}
         color={globalColors.ORANGE}
@@ -85,6 +87,3 @@ export function StarterScreen({ navigation }) {
     </View>
   );
 }
-
-// eslint-disable-next-line no-unused-vars
-const style = StyleSheet.create({});
