@@ -20,7 +20,7 @@ const { width, height } = Dimensions.get('window');
 
 function EntriesContent({ entry }) {
   const {
-    name, id, image, description,
+    name, image,
   } = entry;
 
   return (
