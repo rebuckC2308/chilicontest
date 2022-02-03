@@ -1,31 +1,52 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
-  View, Text, Button,
+  View, Text, Button, Image, Dimensions, ScrollView,
 } from 'react-native';
+import { Card } from 'react-native-elements';
 import SvgComponent from '../TestComponent';
 import { globalColors } from '../styles';
 import { styles } from './contestStyles';
 import { ErrorModal } from '../Modal/ErrorModal';
-import { LoadingSpinner } from '../Components/LoadingSpinner';
+// import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { UserDetailsContext } from '../Contexts/UserContext';
 
-const contests = 0;
+const entries = [{
+  id: 1, name: "Chris's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds best chili',
+}, {
+  id: 2, name: "Jeremy's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds worst chili',
+}];
 
-function EntriesContent() {
+const { width, height } = Dimensions.get('window');
+
+function EntriesContent({ entry }) {
+  const {
+    name, id, image, description,
+  } = entry;
+
   return (
-    <View style={{ alignSelf: 'center' }}>
-      <Text>Entry 1</Text>
-      <Text>Entry 2</Text>
-      <Text>Entry 3</Text>
+    <View>
+      <Card containerStyle={{ marginTop: 15 }}>
+        <Card.Title>{`${name}`}</Card.Title>
+        <Card.Divider />
+        <Image
+          style={{
+            width: width * 0.8,
+            height: height * 0.5,
+          }}
+          source={{ uri: image }}
+        />
+      </Card>
     </View>
   );
 }
 
 function ContestContentComponent() {
   const {
-    globalUserName, shouldDisplayErrorModal, errorModalText, isLoading,
-    setShouldDisplayErrorModal, currentContestAdmin, currentContestID,
+    globalUserName, shouldDisplayErrorModal, errorModalText,
+    setShouldDisplayErrorModal, currentContestAdmin,
   } = useContext(UserDetailsContext);
+
+  //   currentContestID, isLoading,
 
   return (
     <View>
@@ -63,7 +84,16 @@ export function ContestScreen() {
         </View>
       </View>
       <View>
-        {!contests ? <ContestContentComponent /> : <EntriesContent />}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          bounces
+          style={{ marginBottom: 75 }}
+        >
+          {entries.length
+            ? (entries.map((entry) => <EntriesContent entry={entry} key={entry.id} />))
+            : <ContestContentComponent />}
+        </ScrollView>
       </View>
     </View>
   );

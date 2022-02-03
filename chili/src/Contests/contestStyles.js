@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     flexGrow: 0.25,
     width: '100%',
     marginBottom: 25,
-    marginTop: 100,
+    marginTop: 50,
   },
 
   textContainer: {

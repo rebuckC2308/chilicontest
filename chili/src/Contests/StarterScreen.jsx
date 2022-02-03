@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import {
-  View, Text, StyleSheet, Button, TextInput,
+  View, Text, Button, TextInput,
 } from 'react-native';
 import { ErrorModal } from '../Modal/ErrorModal';
 import SvgComponent from '../TestComponent';
