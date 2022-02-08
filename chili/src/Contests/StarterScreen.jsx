@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import {
-  View, Text, Button, TextInput,
+  View, Text, TouchableOpacity, TextInput,
 } from 'react-native';
 import { ErrorModal } from '../Modal/ErrorModal';
 import SvgComponent from '../TestComponent';
@@ -12,19 +12,10 @@ import { UserDetailsContext } from '../Contexts/UserContext';
 
 function MainContent({ setIsLoading, navigation }) {
   const {
-    globalUserName, shouldDisplayErrorModal, errorModalText, isLoading,
+    globalUserName, shouldDisplayErrorModal, errorModalText,
     setShouldDisplayErrorModal, setErrorModalText, setCurrentContestAdmin,
-    setCurrentContestID, currentContestAdmin, currentContestID,
+    setCurrentContestID,
   } = useContext(UserDetailsContext);
-  // eslint-disable-next-line no-console
-  console.log({
-    globalUserName,
-    shouldDisplayErrorModal,
-    errorModalText,
-    isLoading,
-    currentContestAdmin,
-    currentContestID,
-  });
 
   return (
     <View>
@@ -33,25 +24,47 @@ function MainContent({ setIsLoading, navigation }) {
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
-      <Text style={styles.welcomeText}>{`Welcome ${globalUserName}!`}</Text>
-      <Button
-        containerStyle={styles.buttonStyle}
-        color={globalColors.ORANGE}
-        title="Create A Contest"
-        onPress={() => {
-          createContest({
-            setIsLoading,
-            globalUserName,
-            navigation,
-            setShouldDisplayErrorModal,
-            setErrorModalText,
-            setCurrentContestAdmin,
-            setCurrentContestID,
-          });
-        }}
-      />
-      <View style={styles.join}>
-        <Text style={styles.text}> Or Join A Contest</Text>
+      <View style={{ flex: 2, justifyContent: 'center' }}>
+        <TouchableOpacity
+          onPress={() => {
+            createContest({
+              setIsLoading,
+              globalUserName,
+              navigation,
+              setShouldDisplayErrorModal,
+              setErrorModalText,
+              setCurrentContestAdmin,
+              setCurrentContestID,
+            });
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: globalColors.ORANGE,
+              height: 75,
+              width: 250,
+              borderRadius: 50,
+              alignContent: 'center',
+              justifyContent: 'center',
+              alignItems: 'center',
+              shadowColor: '#000000',
+              shadowOffset: { width: -2, height: 4 },
+              shadowOpacity: 0.2,
+              shadowRadius: 3,
+            }}
+          >
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontWeight: 'bold', color: 'white', fontSize: 20 }}>
+                Create a New Contest
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={{ flex: 3 }}>
+        <View style={{ alignItems: 'center', marginBottom: 10 }}>
+          <Text style={styles.text}> Join A Contest</Text>
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Enter Contest PIN"

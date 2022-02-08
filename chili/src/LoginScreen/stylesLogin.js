@@ -3,13 +3,7 @@ import { globalColors } from '../styles';
 
 export const styles = StyleSheet.create({
   container: {
-    height: '100%',
     backgroundColor: globalColors.DARK_GREY,
-    display: 'flex',
-  },
-
-  gapIcon: {
-    marginLeft: 10,
   },
 
   logo: {
@@ -44,23 +38,7 @@ export const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    marginBottom: 100,
-  },
-
-  buttonContainers: {
-    display: 'flex',
-    alignSelf: 'center',
-    marginTop: 20,
-    width: 200,
-    alignItems: 'stretch',
-  },
-
-  buttons: {
-    marginBottom: 50,
-  },
-
-  buttonBackgroundColor: {
-    backgroundColor: globalColors.ORANGE,
+    marginHorizontal: 25,
   },
 
   spinner: {

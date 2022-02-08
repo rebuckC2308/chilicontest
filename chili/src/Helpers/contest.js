@@ -45,7 +45,7 @@ export const createContest = async ({
     }
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log(err);
+    console.error(err);
   } finally {
     setTimeout(
       () => setIsLoading(false),
