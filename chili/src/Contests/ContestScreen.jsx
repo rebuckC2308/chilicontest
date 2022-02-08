@@ -5,16 +5,19 @@ import {
 import { Card } from 'react-native-elements';
 import SvgComponent from '../TestComponent';
 import { globalColors } from '../styles';
-import { styles } from './contestStyles';
+import { styles as contestStyles } from './contestStyles';
 import { ErrorModal } from '../Modal/ErrorModal';
-// import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { UserDetailsContext } from '../Contexts/UserContext';
+import { CreateEntryForm } from '../Components/CreateEntryForm';
+// import { LoadingSpinner } from '../Components/LoadingSpinner';
 
-const entries = [{
-  id: 1, name: "Chris's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds best chili',
-}, {
-  id: 2, name: "Jeremy's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds worst chili',
-}];
+const entries = [
+//     {
+//   id: 1, name: "Chris's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds best chili',
+// }, {
+//   id: 2, name: "Jeremy's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds worst chili',
+// }
+];
 
 const { width, height } = Dimensions.get('window');
 
@@ -40,12 +43,37 @@ function EntriesContent({ entry }) {
   );
 }
 
-function ContestContentComponent() {
+function NoEntriesComponent() {
   const {
-    globalUserName, shouldDisplayErrorModal, errorModalText,
-    setShouldDisplayErrorModal, currentContestAdmin,
+    globalUserName, currentContestAdmin, setShowCreateEntryForm, showCreateEntryForm,
   } = useContext(UserDetailsContext);
 
+  return (
+    <View>
+      <View style={contestStyles.textContainer}>
+        <Text style={contestStyles.text}>{`This contest was created by ${currentContestAdmin}`}</Text>
+        <Text style={contestStyles.text}>{`${globalUserName}, there are no entries`}</Text>
+        <Text style={contestStyles.text}>You should create one and get started</Text>
+
+      </View>
+      <View style={contestStyles.buttonContainer}>
+        <Button
+          color={globalColors.ORANGE}
+          title="Create An Entry"
+          onPress={() => {
+            setShowCreateEntryForm(!showCreateEntryForm);
+          }}
+        />
+      </View>
+    </View>
+  );
+}
+
+function ContestContentComponent() {
+  const {
+    shouldDisplayErrorModal, errorModalText,
+    setShouldDisplayErrorModal, showCreateEntryForm,
+  } = useContext(UserDetailsContext);
   //   currentContestID, isLoading,
 
   return (
@@ -55,35 +83,23 @@ function ContestContentComponent() {
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>{`This contest was created by ${currentContestAdmin}`}</Text>
-        <Text style={styles.text}>{`${globalUserName}, there are no entries`}</Text>
-        <Text style={styles.text}>You should create one and get started</Text>
-
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          color={globalColors.ORANGE}
-          title="Create An Entry"
-        />
-      </View>
-
+      {showCreateEntryForm ? <CreateEntryForm /> : <NoEntriesComponent />}
     </View>
   );
 }
 
 export function ContestScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
+    <View style={contestStyles.container}>
+      <View style={contestStyles.titleContainer}>
         <View>
-          <Text style={styles.titleText}>Chili Cookoff</Text>
+          <Text style={contestStyles.titleText}>Chili Cookoff</Text>
         </View>
-        <View style={styles.logo}>
+        <View style={contestStyles.logo}>
           <SvgComponent />
         </View>
       </View>
-      <View>
+      <View style={{ alignItems: 'center' }}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
