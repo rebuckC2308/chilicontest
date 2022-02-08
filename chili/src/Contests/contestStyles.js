@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: globalColors.DARK_GREY,
     display: 'flex',
+    paddingTop: 15,
   },
 
   buttonContainer: {

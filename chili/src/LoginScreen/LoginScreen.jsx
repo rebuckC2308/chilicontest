@@ -1,46 +1,30 @@
-import React, { useState, useContext } from 'react';
-import {
-  View, Text,
-} from 'react-native';
-import { Button, Input } from 'react-native-elements';
-// eslint-disable-next-line import/no-unresolved
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { Input } from 'react-native-elements';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './stylesLogin';
-import SvgComponent from '../TestComponent';
-import { globalColors } from '../styles';
-import { views } from '../Constants/constants';
-import { handleLogin } from '../Helpers/login';
 import { ErrorModal } from '../Modal/ErrorModal';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
-import { UserDetailsContext } from '../Contexts/UserContext';
 
 // eslint-disable-next-line import/prefer-default-export
-export function LoginScreen({ setView, navigation }) {
-  const { setGlobalUserName } = useContext(UserDetailsContext);
-
-  const [localUsername, setLocalUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
-  const [errorModalText, setErrorModalText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+export function LoginScreen({
+  setLocalUsername,
+  setPassword,
+  shouldDisplayErrorModal,
+  errorModalText,
+  isLoading,
+  setShouldDisplayErrorModal,
+}) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <View>
       <ErrorModal
         setShouldDisplayErrorModal={setShouldDisplayErrorModal}
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
-      <View style={styles.titleContainer}>
-        <View>
-          <Text style={styles.titleText}>Chili Cookoff</Text>
-        </View>
-        <View style={styles.logo}>
-          <SvgComponent />
-        </View>
-      </View>
-
       {isLoading ? (
         <View style={styles.spinner}>
           <LoadingSpinner />
@@ -55,6 +39,7 @@ export function LoginScreen({ setView, navigation }) {
               onChangeText={(input) => {
                 setLocalUsername(input);
               }}
+              style={{ color: 'white' }}
             />
             <Input
               placeholder="Password"
@@ -64,6 +49,7 @@ export function LoginScreen({ setView, navigation }) {
               onChangeText={(input) => {
                 setPassword(input);
               }}
+              style={{ color: 'white' }}
               rightIcon={(
                 <Icon
                   name={isPasswordVisible ? 'eye-slash' : 'eye'}
@@ -77,33 +63,6 @@ export function LoginScreen({ setView, navigation }) {
             />
           </View>
         )}
-      <View style={styles.buttons}>
-        <View style={styles.buttonContainers}>
-          <Button
-            buttonStyle={styles.buttonBackgroundColor}
-            color={globalColors.ORANGE}
-            title="Login"
-            onPress={() => handleLogin(
-              localUsername,
-              password,
-              navigation,
-              setShouldDisplayErrorModal,
-              setErrorModalText,
-              setIsLoading,
-              setGlobalUserName,
-            )}
-          />
-        </View>
-        <View style={styles.buttonContainers}>
-          <Button
-            buttonStyle={styles.buttonBackgroundColor}
-            color={globalColors.ORANGE}
-            title="Register"
-            onPress={() => setView(views.REGISTER)}
-          />
-        </View>
-
-      </View>
     </View>
   );
 }

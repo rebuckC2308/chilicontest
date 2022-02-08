@@ -4,7 +4,25 @@ import { globalColors } from '../styles';
 export const styles = StyleSheet.create({
   buttonStyle: {
     width: 200,
-    marginVertical: 10,
+  },
+
+  registerButtonStyle: {
+    width: '50%',
+  },
+
+  loginButtonStyle: {
+    width: '80%',
+    marginTop: 20,
+  },
+
+  loginButtonTextStyles: {
+    fontSize: 30,
+    marginLeft: 15,
+  },
+
+  registerButtonTextStyles: {
+    fontSize: 20,
+    marginLeft: 15,
   },
 
   buttonBackgroundColor: {
@@ -13,19 +31,30 @@ export const styles = StyleSheet.create({
 
   container: {
     height: '100%',
-    display: 'flex',
     backgroundColor: globalColors.DARK_GREY,
-    justifyContent: 'flex-end',
   },
 
-  buttonContainer: {
-    display: 'flex',
+  loginContainer: {
+    flex: 3,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+
+  loginButtonContainer: {
     alignItems: 'center',
-    marginBottom: 100,
   },
 
-  gapIcon: {
-    marginLeft: 10,
+  registerButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 2,
+  },
+
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
   },
 
   logo: {
@@ -36,16 +65,7 @@ export const styles = StyleSheet.create({
 
   titleText: {
     fontSize: 50,
-    display: 'flex',
     color: globalColors.LIGHT_GREY,
-    // fontFamily: "notoserif",
   },
 
-  titleContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginBottom: 250,
-  },
 });
