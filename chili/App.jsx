@@ -27,16 +27,16 @@ function App() {
           screenOptions={{ ...defaultOptions, headerShown: true }}
         >
           <Stack.Screen
+            name="Contest Screen"
+            component={ContestScreen}
+          />
+          <Stack.Screen
             name="Chili Cook Off"
             component={LandingScreen}
           />
           <Stack.Screen
             name="Starter Screen"
             component={StarterScreen}
-          />
-          <Stack.Screen
-            name="Contest Screen"
-            component={ContestScreen}
           />
         </Stack.Navigator>
       </UserStateProvider>

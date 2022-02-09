@@ -113,7 +113,7 @@ export function ContestScreen() {
             horizontal
             showsHorizontalScrollIndicator={false}
             bounces
-            style={{ marginBottom: 75 }}
+            style={{ marginBottom: 75, minWidth: '100%' }}
           >
             {entries.length
               ? (entries.map((entry) => <EntriesContent entry={entry} key={entry.id} />))

@@ -5,7 +5,7 @@ const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
-    width: width * 0.95,
+    width: width * 0.85,
     justifyContent: 'center',
   },
 
