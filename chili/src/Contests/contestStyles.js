@@ -4,18 +4,13 @@ import { globalColors } from '../styles';
 export const styles = StyleSheet.create({
   container: {
     height: '100%',
+    width: '100%',
     backgroundColor: globalColors.DARK_GREY,
-    display: 'flex',
     paddingTop: 15,
+    justifyContent: 'center',
   },
 
-  buttonContainer: {
-    display: 'flex',
-    alignSelf: 'center',
-    marginHorizontal: 16,
-    width: 225,
-    alignItems: 'stretch',
-  },
+  buttonContainer: { flex: 1, alignItems: 'center' },
 
   gapIcon: {
     marginLeft: 10,
@@ -32,11 +27,9 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     color: globalColors.LIGHT_GREY,
-    // fontFamily: "notoserif",
   },
 
   titleContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,17 +40,43 @@ export const styles = StyleSheet.create({
   },
 
   textContainer: {
-    display: 'flex',
     alignItems: 'center',
     width: '100%',
-    marginBottom: 100,
-    borderWidth: 2,
-    borderColor: 'pink',
   },
 
   text: {
     color: globalColors.LIGHT_GREY,
     fontSize: 23,
     marginBottom: 7,
+  },
+
+  mainContent: { flex: 4, justifyContent: 'center', alignItems: 'center' },
+
+  addEntryButton: {
+    backgroundColor: globalColors.ORANGE,
+    height: 75,
+    width: 250,
+    borderRadius: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+
+  cancelButton: {
+    backgroundColor: globalColors.ORANGE,
+    height: 50,
+    width: 150,
+    borderRadius: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
 });

@@ -9,17 +9,18 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  formLabel: {
-    fontSize: 30,
-    color: globalColors.DARK_GREY,
-  },
-
-  inputs: {
-    backgroundColor: globalColors.LIGHT_GREY,
-  },
-
   button: {
-    color: globalColors.ORANGE,
+    backgroundColor: globalColors.ORANGE,
+    height: 60,
+    width: 250,
+    borderRadius: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
 
 });

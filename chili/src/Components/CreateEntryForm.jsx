@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
-import { globalColors } from '../styles';
 import Spacer from './Spacer';
 import { styles as entryFormStyles } from '../Entries/entryFormStyle';
 
@@ -12,16 +11,14 @@ export function CreateEntryForm() {
 
   return (
     <View style={entryFormStyles.container}>
-      <Spacer>
-        <Text style={entryFormStyles.formLabel}>Add an Entry</Text>
-
-      </Spacer>
       <View style={entryFormStyles.inputs}>
         <Spacer>
           <Input
             placeholder="Enter Entry Name"
             autoComplete="off"
             onChangeText={setName}
+            inputStyle={{ color: 'white' }}
+            placeholderTextColor="white"
           />
         </Spacer>
         <Spacer>
@@ -29,6 +26,8 @@ export function CreateEntryForm() {
             placeholder="Enter Description"
             autoComplete="off"
             onChangeText={setDiscription}
+            inputStyle={{ color: 'white' }}
+            placeholderTextColor="white"
           />
         </Spacer>
         <Spacer>
@@ -36,19 +35,14 @@ export function CreateEntryForm() {
             placeholder="Image"
             autoComplete="off"
             onChangeText={setImageURL}
+            inputStyle={{ color: 'white' }}
+            placeholderTextColor="white"
           />
         </Spacer>
       </View>
-      <View>
+      <View style={{ alignItems: 'center' }}>
         <Button
-          containerStyle={{
-            width: 200,
-            alignSelf: 'center',
-            marginVertical: 10,
-          }}
-          buttonStyle={{
-            backgroundColor: globalColors.ORANGE,
-          }}
+          buttonStyle={entryFormStyles.button}
           title="Submit Entry"
         // eslint-disable-next-line no-console
           onPress={() => console.log(name, description, imageURL)}
