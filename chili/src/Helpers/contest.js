@@ -52,6 +52,4 @@ export const createContest = async ({
       5000,
     );
   }
-
-  // Contact endpoint to insert contest into DB
 };

@@ -44,6 +44,6 @@ export const handleLogin = async (
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(`Error in handleRegister ${error}`);
+    console.error(`Error in handleLogin ${error}`);
   }
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   View, Text, Image, Dimensions, ScrollView, TouchableOpacity,
 } from 'react-native';
@@ -9,6 +9,7 @@ import { styles as contestStyles } from './contestStyles';
 import { ErrorModal } from '../Modal/ErrorModal';
 import { UserDetailsContext } from '../Contexts/UserContext';
 import { CreateEntryForm } from '../Components/CreateEntryForm';
+import { getAllEntries } from '../Helpers/getAllEntries';
 // import { LoadingSpinner } from '../Components/LoadingSpinner';
 
 const { width, height } = Dimensions.get('window');
@@ -103,15 +104,14 @@ export function ContestScreen() {
   const {
     shouldDisplayErrorModal, errorModalText,
     setShouldDisplayErrorModal, showCreateEntryForm,
+    currentContestID, entries, setEntries,
   } = useContext(UserDetailsContext);
 
-  const entries = [
-    {
-      id: 1, name: "Chris's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds best chili',
-    }, {
-      id: 2, name: "Jeremy's Chili", image: 'https://therecipecritic.com/wp-content/uploads/2020/04/homemadechili_2-667x1000.jpg', description: 'Worlds worst chili',
-    },
-  ];
+  useEffect(() => {
+    getAllEntries(currentContestID, setEntries);
+  }, []);
+
+  //   console.log(entries);
 
   return (
     <View style={contestStyles.container}>

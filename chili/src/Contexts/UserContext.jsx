@@ -13,6 +13,7 @@ export function UserStateProvider({ children }) {
   const [currentContestID, setCurrentContestID] = useState('');
 
   const [showCreateEntryForm, setShowCreateEntryForm] = useState(false);
+  const [entries, setEntries] = useState([]);
 
   const userState = React.useMemo(() => ({
     globalUserName,
@@ -29,9 +30,11 @@ export function UserStateProvider({ children }) {
     setCurrentContestID,
     showCreateEntryForm,
     setShowCreateEntryForm,
+    entries,
+    setEntries,
   }), [globalUserName, shouldDisplayErrorModal, errorModalText,
     isLoading, currentContestAdmin, showCreateEntryForm,
-    setShowCreateEntryForm,
+    setShowCreateEntryForm, entries,
     currentContestID]);
 
   return (

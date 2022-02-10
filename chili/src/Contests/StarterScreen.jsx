@@ -9,6 +9,7 @@ import { globalColors } from '../styles';
 import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { createContest } from '../Helpers/contest';
 import { UserDetailsContext } from '../Contexts/UserContext';
+import { getContestEntries } from '../Helpers/getContestEntries';
 
 function MainContent({ setIsLoading, navigation }) {
   const {
@@ -16,6 +17,8 @@ function MainContent({ setIsLoading, navigation }) {
     setShouldDisplayErrorModal, setErrorModalText, setCurrentContestAdmin,
     setCurrentContestID,
   } = useContext(UserDetailsContext);
+
+  const [contestPIN, setContestPIN] = useState('');
 
   return (
     <View>
@@ -70,6 +73,13 @@ function MainContent({ setIsLoading, navigation }) {
           placeholder="Enter Contest PIN"
           autoComplete="off"
           keyboardType="numeric"
+          maxLength={5}
+          onChangeText={setContestPIN}
+          onSubmitEditing={() => getContestEntries({
+            contestPIN,
+            setCurrentContestID,
+            navigation,
+          })}
         />
       </View>
     </View>
