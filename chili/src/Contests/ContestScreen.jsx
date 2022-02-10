@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get('window');
 
 function EntriesContent({ entry }) {
   const {
-    name, image,
+    name, image, description,
   } = entry;
 
   return (
@@ -34,10 +34,11 @@ function EntriesContent({ entry }) {
         <Image
           style={{
             minWidth: width * 0.8,
-            height: height * 0.5,
+            height: height * 0.45,
           }}
           source={{ uri: image }}
         />
+        <Text>{`${description}`}</Text>
       </Card>
     </View>
   );
