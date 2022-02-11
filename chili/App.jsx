@@ -6,6 +6,8 @@ import { LandingScreen } from './src/HomeScreen';
 import { StarterScreen } from './src/Contests/StarterScreen';
 import { ContestScreen } from './src/Contests/ContestScreen';
 import { globalColors } from './src/styles';
+import { ContestStateProvider } from './src/Contexts/EntriesContext';
+import { ModalStateProvider } from './src/Contexts/ModalContext';
 
 const Stack = createNativeStackNavigator();
 const defaultOptions = {
@@ -23,22 +25,28 @@ function App() {
   return (
     <NavigationContainer>
       <UserStateProvider>
-        <Stack.Navigator
-          screenOptions={{ ...defaultOptions, headerShown: true }}
-        >
-          <Stack.Screen
-            name="Starter Screen"
-            component={StarterScreen}
-          />
-          <Stack.Screen
-            name="Chili Cook Off"
-            component={LandingScreen}
-          />
-          <Stack.Screen
-            name="Contest Screen"
-            component={ContestScreen}
-          />
-        </Stack.Navigator>
+        <ModalStateProvider>
+          <ContestStateProvider>
+            <Stack.Navigator
+              screenOptions={{ ...defaultOptions, headerShown: true }}
+            >
+              <Stack.Screen
+                name="Starter Screen"
+                component={StarterScreen}
+              />
+
+              <Stack.Screen
+                name="Contest Screen"
+                component={ContestScreen}
+              />
+
+              <Stack.Screen
+                name="Chili Cook Off"
+                component={LandingScreen}
+              />
+            </Stack.Navigator>
+          </ContestStateProvider>
+        </ModalStateProvider>
       </UserStateProvider>
     </NavigationContainer>
   );

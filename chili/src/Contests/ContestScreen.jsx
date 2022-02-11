@@ -7,7 +7,8 @@ import { Card } from 'react-native-elements';
 import { globalColors } from '../styles';
 import { styles as contestStyles } from './contestStyles';
 import { ErrorModal } from '../Modal/ErrorModal';
-import { UserDetailsContext } from '../Contexts/UserContext';
+import { ModalContext } from '../Contexts/ModalContext';
+import { ContestContext } from '../Contexts/EntriesContext';
 import { CreateEntryForm } from '../Components/CreateEntryForm';
 import { getAllEntries } from '../Helpers/getAllEntries';
 // import { LoadingSpinner } from '../Components/LoadingSpinner';
@@ -68,7 +69,7 @@ function AddEntryButton() {
   const {
     setShowCreateEntryForm,
     showCreateEntryForm,
-  } = useContext(UserDetailsContext);
+  } = useContext(ContestContext);
 
   const buttonSize = showCreateEntryForm ? 15 : 20;
   const buttonStyle = showCreateEntryForm
@@ -104,9 +105,12 @@ function AddEntryButton() {
 export function ContestScreen() {
   const {
     shouldDisplayErrorModal, errorModalText,
-    setShouldDisplayErrorModal, showCreateEntryForm,
-    currentContestID, entries, setEntries,
-  } = useContext(UserDetailsContext);
+    setShouldDisplayErrorModal,
+  } = useContext(ModalContext);
+
+  const {
+    currentContestID, entries, setEntries, showCreateEntryForm,
+  } = useContext(ContestContext);
 
   useEffect(() => {
     getAllEntries(currentContestID, setEntries);

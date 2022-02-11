@@ -10,13 +10,20 @@ import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { createContest } from '../Helpers/contest';
 import { UserDetailsContext } from '../Contexts/UserContext';
 import { getContestEntries } from '../Helpers/getContestEntries';
+import { ContestContext } from '../Contexts/EntriesContext';
+import { ModalContext } from '../Contexts/ModalContext';
 
 function MainContent({ setIsLoading, navigation }) {
   const {
-    globalUserName, shouldDisplayErrorModal, errorModalText,
-    setShouldDisplayErrorModal, setErrorModalText, setCurrentContestAdmin,
-    setCurrentContestID,
+    globalUserName, setCurrentContestAdmin,
   } = useContext(UserDetailsContext);
+
+  const {
+    shouldDisplayErrorModal, errorModalText,
+    setShouldDisplayErrorModal, setErrorModalText,
+  } = useContext(ModalContext);
+
+  const { setCurrentContestID } = useContext(ContestContext);
 
   const [contestPIN, setContestPIN] = useState('');
 
