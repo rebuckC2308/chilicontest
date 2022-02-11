@@ -21,11 +21,13 @@ export const createContest = async ({
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: globalUserName,
+        username: globalUserName || 'DevelopmentNoName',
       }),
     });
     const { status } = response;
-    const { admin, contestId, errorMessage } = await response.json();
+    const {
+      admin, contestId, errorMessage, randomContestId,
+    } = await response.json();
 
     switch (status) {
       case 201:

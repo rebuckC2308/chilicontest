@@ -16,11 +16,9 @@ export const getAllEntries = async (id, setEntries) => {
 
     switch (status) {
       case 200:
-        console.log(res);
         setEntries(res);
         return;
       default:
-        console.log(res.errorMessage);
         break;
     }
   } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View, Text, Image, Dimensions, ScrollView, TouchableOpacity,
 } from 'react-native';
@@ -8,7 +8,7 @@ import { globalColors } from '../styles';
 import { styles as contestStyles } from './contestStyles';
 import { ErrorModal } from '../Modal/ErrorModal';
 import { ModalContext } from '../Contexts/ModalContext';
-import { ContestContext } from '../Contexts/EntriesContext';
+import { ContestContext } from '../Contexts/ContestContext';
 import { CreateEntryForm } from '../Components/CreateEntryForm';
 import { getAllEntries } from '../Helpers/getAllEntries';
 // import { LoadingSpinner } from '../Components/LoadingSpinner';
@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get('window');
 
 function EntriesContent({ entry }) {
   const {
-    name, image, description,
+    name, imageurl, description,
   } = entry;
 
   return (
@@ -37,7 +37,7 @@ function EntriesContent({ entry }) {
             minWidth: width * 0.8,
             height: height * 0.45,
           }}
-          source={{ uri: image }}
+          source={{ uri: imageurl }}
         />
         <Text>{`${description}`}</Text>
       </Card>
@@ -109,14 +109,15 @@ export function ContestScreen() {
   } = useContext(ModalContext);
 
   const {
-    currentContestID, entries, setEntries, showCreateEntryForm,
+    currentContestID, entries, setEntries, showCreateEntryForm, setShowCreateEntryForm,
   } = useContext(ContestContext);
+
+  const [shouldFetchEntries, setShouldFetchEntries] = useState(false);
 
   useEffect(() => {
     getAllEntries(currentContestID, setEntries);
-  }, []);
-
-  //   console.log(entries);
+    setShouldFetchEntries(false);
+  }, [shouldFetchEntries]);
 
   return (
     <View style={contestStyles.container}>
@@ -134,7 +135,10 @@ export function ContestScreen() {
       )}
       {showCreateEntryForm && (
         <View style={contestStyles.mainContent}>
-          <CreateEntryForm />
+          <CreateEntryForm
+            setShouldFetchEntries={setShouldFetchEntries}
+            setShowCreateEntryForm={setShowCreateEntryForm}
+          />
         </View>
       )}
       <View style={contestStyles.buttonContainer}>

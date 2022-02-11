@@ -10,7 +10,7 @@ import { LoadingSpinner } from '../Components/LoadingSpinner';
 import { createContest } from '../Helpers/contest';
 import { UserDetailsContext } from '../Contexts/UserContext';
 import { getContestEntries } from '../Helpers/getContestEntries';
-import { ContestContext } from '../Contexts/EntriesContext';
+import { ContestContext } from '../Contexts/ContestContext';
 import { ModalContext } from '../Contexts/ModalContext';
 
 function MainContent({ setIsLoading, navigation }) {

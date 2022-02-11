@@ -4,16 +4,14 @@ import { Button, Input } from 'react-native-elements';
 import Spacer from './Spacer';
 import { styles as entryFormStyles } from '../Entries/entryFormStyle';
 import { createEntry } from '../Helpers/createEntry';
-import { UserDetailsContext } from '../Contexts/UserContext';
+import { ContestContext } from '../Contexts/ContestContext';
 
-export function CreateEntryForm() {
+export function CreateEntryForm({ setShouldFetchEntries, setShowCreateEntryForm }) {
   const [name, setName] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [description, setDiscription] = useState('');
 
-  const { currentContestID } = useContext(UserDetailsContext);
-
-  console.log(currentContestID);
+  const { currentContestID } = useContext(ContestContext);
 
   return (
     <View style={entryFormStyles.container}>
@@ -51,7 +49,16 @@ export function CreateEntryForm() {
           buttonStyle={entryFormStyles.button}
           title="Submit Entry"
         // eslint-disable-next-line no-console
-          onPress={() => createEntry(currentContestID, name, imageURL, description)}
+          onPress={
+            () => createEntry({
+              currentContestID,
+              name,
+              imageURL,
+              description,
+              setShouldFetchEntries,
+              setShowCreateEntryForm,
+            })
+          }
         />
       </View>
     </View>

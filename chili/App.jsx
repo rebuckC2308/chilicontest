@@ -6,7 +6,7 @@ import { LandingScreen } from './src/HomeScreen';
 import { StarterScreen } from './src/Contests/StarterScreen';
 import { ContestScreen } from './src/Contests/ContestScreen';
 import { globalColors } from './src/styles';
-import { ContestStateProvider } from './src/Contexts/EntriesContext';
+import { ContestStateProvider } from './src/Contexts/ContestContext';
 import { ModalStateProvider } from './src/Contexts/ModalContext';
 
 const Stack = createNativeStackNavigator();

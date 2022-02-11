@@ -14,16 +14,13 @@ export const getContestEntries = async ({ contestPIN, setCurrentContestID, navig
 
     const { status } = response;
     const res = await response.json();
-    console.log(res.id);
 
     switch (status) {
       case 200:
-        console.log('Success Getting Entries');
         setCurrentContestID(res.id);
         navigation.navigate('Contest Screen');
         return;
       default:
-        console.error(res.errorMessage);
         break;
     }
   } catch (error) {
