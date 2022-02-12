@@ -1,7 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Button } from 'react-native-elements';
-import { View, Text } from 'react-native';
+import {
+  View, Text, KeyboardAvoidingView, Platform, Keyboard,
+} from 'react-native';
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import SvgComponent from '../TestComponent';
 import { views } from '../Constants/constants';
@@ -31,34 +34,42 @@ export function HomeScreen({ setView, navigation }) {
       </View>
 
       <View style={styles.loginContainer}>
-        <LoginScreen
-          navigation={navigation}
-          setLocalUsername={setLocalUsername}
-          setPassword={setPassword}
-          shouldDisplayErrorModal={shouldDisplayErrorModal}
-          errorModalText={errorModalText}
-          isLoading={isLoading}
-          setShouldDisplayErrorModal={setShouldDisplayErrorModal}
-        />
-        <View style={styles.loginButtonContainer}>
-          <Button
-            icon={<MaterialCommunityIcons name="login" size={36} color="white" />}
-            title="Log In"
-            raised
-            containerStyle={styles.loginButtonStyle}
-            buttonStyle={styles.buttonBackgroundColor}
-            titleStyle={styles.loginButtonTextStyles}
-            onPress={() => handleLogin(
-              localUsername,
-              password,
-              navigation,
-              setShouldDisplayErrorModal,
-              setErrorModalText,
-              setIsLoading,
-              setGlobalUserName,
-            )}
-          />
-        </View>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          <TouchableWithoutFeedback
+            onPress={Keyboard.dismiss}
+          >
+            <LoginScreen
+              navigation={navigation}
+              setLocalUsername={setLocalUsername}
+              setPassword={setPassword}
+              shouldDisplayErrorModal={shouldDisplayErrorModal}
+              errorModalText={errorModalText}
+              isLoading={isLoading}
+              setShouldDisplayErrorModal={setShouldDisplayErrorModal}
+            />
+          </TouchableWithoutFeedback>
+          <View style={styles.loginButtonContainer}>
+            <Button
+              icon={<MaterialCommunityIcons name="login" size={36} color="white" />}
+              title="Log In"
+              raised
+              containerStyle={styles.loginButtonStyle}
+              buttonStyle={styles.buttonBackgroundColor}
+              titleStyle={styles.loginButtonTextStyles}
+              onPress={() => handleLogin(
+                localUsername,
+                password,
+                navigation,
+                setShouldDisplayErrorModal,
+                setErrorModalText,
+                setIsLoading,
+                setGlobalUserName,
+              )}
+            />
+          </View>
+        </KeyboardAvoidingView>
       </View>
 
       <View style={styles.registerButtonContainer}>
