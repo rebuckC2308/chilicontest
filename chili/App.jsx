@@ -31,6 +31,10 @@ function App() {
               screenOptions={{ ...defaultOptions, headerShown: true }}
             >
               <Stack.Screen
+                name="Chili Cook Off"
+                component={LandingScreen}
+              />
+              <Stack.Screen
                 name="Starter Screen"
                 component={StarterScreen}
               />
@@ -40,10 +44,6 @@ function App() {
                 component={ContestScreen}
               />
 
-              <Stack.Screen
-                name="Chili Cook Off"
-                component={LandingScreen}
-              />
             </Stack.Navigator>
           </ContestStateProvider>
         </ModalStateProvider>
