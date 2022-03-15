@@ -5,7 +5,7 @@ import { BASEURL } from '@env';
 export const createEntry = async ({
   currentContestID,
   name,
-  imageURL,
+  imageURLTest,
   description,
   setShouldFetchEntries,
   setShowCreateEntryForm,
@@ -27,7 +27,7 @@ export const createEntry = async ({
       body: JSON.stringify({
         currentContestID,
         name,
-        imageURL: randomImages[index],
+        imageURLTest,
         description,
       }),
     });

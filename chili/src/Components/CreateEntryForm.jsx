@@ -5,13 +5,20 @@ import Spacer from './Spacer';
 import { styles as entryFormStyles } from '../Entries/entryFormStyle';
 import { createEntry } from '../Helpers/createEntry';
 import { ContestContext } from '../Contexts/ContestContext';
+import chilibowl from '../images/chilibowl.jpg';
 
-export function CreateEntryForm({ setShouldFetchEntries, setShowCreateEntryForm }) {
+export function CreateEntryForm({
+  setShouldFetchEntries,
+  setShowCreateEntryForm,
+}) {
   const [name, setName] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [imageURL, setImageURL] = useState('');
   const [description, setDiscription] = useState('');
 
   const { currentContestID } = useContext(ContestContext);
+
+  const imageURLTest = chilibowl;
 
   return (
     <View style={entryFormStyles.container}>
@@ -48,17 +55,15 @@ export function CreateEntryForm({ setShouldFetchEntries, setShowCreateEntryForm 
         <Button
           buttonStyle={entryFormStyles.button}
           title="Submit Entry"
-        // eslint-disable-next-line no-console
-          onPress={
-            () => createEntry({
-              currentContestID,
-              name,
-              imageURL,
-              description,
-              setShouldFetchEntries,
-              setShowCreateEntryForm,
-            })
-          }
+          // eslint-disable-next-line no-console
+          onPress={() => createEntry({
+            currentContestID,
+            name,
+            imageURLTest,
+            description,
+            setShouldFetchEntries,
+            setShowCreateEntryForm,
+          })}
         />
       </View>
     </View>

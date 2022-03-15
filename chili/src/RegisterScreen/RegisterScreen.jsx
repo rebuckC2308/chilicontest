@@ -141,7 +141,7 @@ export function RegisterScreen({ setView, navigation }) {
           <Button
             containerStyle={styles.buttonStyle}
             buttonStyle={styles.buttonBackgroundColor}
-            title="Home"
+            title="Login"
             onPress={() => setView(views.HOME_SCREEN)}
           />
         </View>
