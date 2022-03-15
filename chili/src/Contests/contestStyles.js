@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { globalColors } from '../styles';
 
-// eslint-disable-next-line import/prefer-default-export
 export const styles = StyleSheet.create({
   container: {
     height: '100%',
+    width: '100%',
     backgroundColor: globalColors.DARK_GREY,
-    display: 'flex',
+    paddingTop: 15,
+    justifyContent: 'center',
   },
+
+  buttonContainer: { flex: 1, alignItems: 'center' },
 
   gapIcon: {
     marginLeft: 10,
@@ -24,55 +27,56 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     color: globalColors.LIGHT_GREY,
-    // fontFamily: "notoserif",
   },
 
   titleContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    flexGrow: 1,
+    flexGrow: 0.25,
     width: '100%',
-    marginTop: 75,
+    marginBottom: 25,
+    marginTop: 50,
   },
 
-  buttonContainer: {
-    display: 'flex',
-    alignSelf: 'center',
-    marginHorizontal: 16,
-    marginBottom: 30,
-    width: 225,
-    alignItems: 'stretch',
-    flexGrow: 1,
-  },
-
-  join: {
-    marginTop: 25,
-    display: 'flex',
-    alignSelf: 'center',
-    marginHorizontal: 16,
-    marginBottom: 30,
-    width: 200,
-    alignItems: 'stretch',
-    flexGrow: 1,
+  textContainer: {
+    alignItems: 'center',
+    width: '100%',
   },
 
   text: {
     color: globalColors.LIGHT_GREY,
     fontSize: 23,
-    justifyContent: 'center',
-    // fontFamily: "notoserif",
     marginBottom: 7,
   },
 
-  input: {
-    height: 40,
-    borderWidth: 1,
-    backgroundColor: globalColors.LIGHT_GREY,
-    textAlign: 'center',
-    width: '100%',
+  mainContent: { flex: 4, justifyContent: 'center', alignItems: 'center' },
+
+  addEntryButton: {
+    backgroundColor: globalColors.ORANGE,
+    height: 75,
+    width: 250,
+    borderRadius: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
 
-  buttonStyle: {},
+  cancelButton: {
+    backgroundColor: globalColors.ORANGE,
+    height: 50,
+    width: 150,
+    borderRadius: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
 });

@@ -1,81 +1,68 @@
 import React, { useState } from 'react';
-import {
-  View, Text, TextInput, Button,
-} from 'react-native';
+import { View } from 'react-native';
+import { Input } from 'react-native-elements';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './stylesLogin';
-import SvgComponent from '../TestComponent';
-import { globalColors } from '../styles';
-import { views } from '../Constants/constants';
-import { handleLogin } from '../Helpers/login';
 import { ErrorModal } from '../Modal/ErrorModal';
+import { LoadingSpinner } from '../Components/LoadingSpinner';
 
 // eslint-disable-next-line import/prefer-default-export
-export function LoginScreen({ setView, navigation }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [shouldDisplayErrorModal, setShouldDisplayErrorModal] = useState(false);
-  const [errorModalText, setErrorModalText] = useState('');
+export function LoginScreen({
+  setLocalUsername,
+  setPassword,
+  shouldDisplayErrorModal,
+  errorModalText,
+  isLoading,
+  setShouldDisplayErrorModal,
+}) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <View>
       <ErrorModal
         setShouldDisplayErrorModal={setShouldDisplayErrorModal}
         shouldDisplayErrorModal={shouldDisplayErrorModal}
         errorModalText={errorModalText}
       />
-      <View style={styles.titleContainer}>
-        <View>
-          <Text style={styles.titleText}>Chili Cookoff</Text>
+      {isLoading ? (
+        <View style={styles.spinner}>
+          <LoadingSpinner />
         </View>
-        <View style={styles.logo}>
-          <SvgComponent />
-        </View>
-      </View>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username or Email"
-          autoCapitalize="none"
-          autoComplete="off"
-          onChangeText={(input) => {
-            setUsername(input);
-          }}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          autoCapitalize="none"
-          autoComplete="off"
-          onChangeText={(input) => {
-            setPassword(input);
-          }}
-        />
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <Button
-          containerStyle={styles.buttonStyle}
-          color={globalColors.ORANGE}
-          title="Login"
-          onPress={() => handleLogin(
-            username,
-            password,
-            navigation,
-            setShouldDisplayErrorModal,
-            setErrorModalText,
-          )}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          containerStyle={styles.buttonStyle}
-          color={globalColors.ORANGE}
-          title="Register"
-          onPress={() => setView(views.REGISTER)}
-        />
-      </View>
+      )
+        : (
+          <View style={styles.inputContainer}>
+            <Input
+              placeholder="Username"
+              autoCapitalize="none"
+              autoComplete="off"
+              onChangeText={(input) => {
+                setLocalUsername(input);
+              }}
+              style={{ color: 'white' }}
+            />
+            <Input
+              placeholder="Password"
+              secureTextEntry={!isPasswordVisible}
+              autoCapitalize="none"
+              autoComplete="off"
+              onChangeText={(input) => {
+                setPassword(input);
+              }}
+              style={{ color: 'white' }}
+              rightIcon={(
+                <Icon
+                  name={isPasswordVisible ? 'eye-slash' : 'eye'}
+                  size={24}
+                  color="white"
+                  onPress={() => {
+                    setIsPasswordVisible(!isPasswordVisible);
+                  }}
+                />
+      )}
+            />
+          </View>
+        )}
     </View>
   );
 }

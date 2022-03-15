@@ -5,8 +5,9 @@ export const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: globalColors.DARK_GREY,
-    justifyContent: 'space-around',
     display: 'flex',
+    paddingTop: 100,
+
   },
 
   gapIcon: {
@@ -16,7 +17,6 @@ export const styles = StyleSheet.create({
   logo: {
     width: 60,
     height: 60,
-
     display: 'flex',
   },
 
@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     width: '100%',
-    marginTop: 100,
   },
 
   input: {
@@ -44,22 +43,28 @@ export const styles = StyleSheet.create({
 
   inputContainer: {
     flexGrow: 1,
-    marginTop: 75,
+    marginTop: 55,
+    marginBottom: 20,
+
   },
 
-  buttonContainer: {
+  buttonContainers: {
     display: 'flex',
     alignSelf: 'center',
-    marginBottom: 30,
+    marginTop: 20,
     width: 200,
     alignItems: 'stretch',
   },
 
   buttons: {
-    marginTop: 50,
+    marginTop: 25,
   },
 
   buttonBackgroundColor: {
     backgroundColor: globalColors.ORANGE,
+  },
+
+  spinner: {
+    marginBottom: 75,
   },
 });

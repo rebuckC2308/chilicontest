@@ -1,47 +1,51 @@
 import { StyleSheet } from 'react-native';
 import { globalColors } from '../styles';
 
+// eslint-disable-next-line import/prefer-default-export
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: globalColors.DARK_GREY,
+    height: '100%',
   },
 
   logo: {
     width: 60,
     height: 60,
-    display: 'flex',
   },
 
   titleText: {
     fontSize: 50,
-    display: 'flex',
-    justifyContent: 'center',
     color: globalColors.LIGHT_GREY,
-    // fontFamily: "notoserif",
   },
 
   titleContainer: {
-    display: 'flex',
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
+    flex: 1,
+  },
+
+  buttonContainer: {
     alignItems: 'center',
-    flexGrow: 1,
-    width: '100%',
+    flex: 2,
+  },
+
+  text: {
+    color: globalColors.LIGHT_GREY,
+    fontSize: 23,
   },
 
   input: {
     height: 40,
-    margin: 12,
     borderWidth: 1,
-    padding: 10,
     backgroundColor: globalColors.LIGHT_GREY,
+    textAlign: 'center',
   },
 
-  inputContainer: {
-    marginHorizontal: 25,
+  welcomeText: {
+    color: globalColors.LIGHT_GREY,
+    fontSize: 30,
+    alignSelf: 'center',
   },
 
-  spinner: {
-    marginBottom: 150,
-  },
 });

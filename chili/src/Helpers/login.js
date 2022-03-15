@@ -8,11 +8,14 @@ export const handleLogin = async (
   navigation,
   setShouldDisplayErrorModal,
   setErrorModalText,
+  setIsLoading,
+  setGlobalUserName,
 ) => {
   // Example POST method implementation:
   // Default options are marked with *
 
   try {
+    setIsLoading(true);
     const response = await fetch(`${BASEURL}/login`, {
       method: 'POST',
       headers: {
@@ -30,14 +33,17 @@ export const handleLogin = async (
     switch (status) {
       case 200:
         navigation.navigation.navigate('Starter Screen');
+        setIsLoading(false);
+        setGlobalUserName(username);
         return;
       default:
         setErrorModalText(res.errorMessage);
         setShouldDisplayErrorModal(true);
+        setIsLoading(false);
         break;
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(`Error in handleRegister ${error}`);
+    console.error(`Error in handleLogin ${error}`);
   }
 };
