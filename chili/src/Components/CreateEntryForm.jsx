@@ -10,6 +10,7 @@ import chilibowl from '../images/chilibowl.jpg';
 export function CreateEntryForm({
   setShouldFetchEntries,
   setShowCreateEntryForm,
+  navigation,
 }) {
   const [name, setName] = useState('');
   // eslint-disable-next-line no-unused-vars
@@ -42,12 +43,11 @@ export function CreateEntryForm({
           />
         </Spacer>
         <Spacer>
-          <Input
-            placeholder="Image"
-            autoComplete="off"
-            onChangeText={setImageURL}
-            inputStyle={{ color: 'white' }}
-            placeholderTextColor="white"
+          <Button
+            buttonStyle={entryFormStyles.button}
+            title="Take Picture"
+          // eslint-disable-next-line no-console
+            onPress={() => navigation.navigate('Camera')}
           />
         </Spacer>
       </View>

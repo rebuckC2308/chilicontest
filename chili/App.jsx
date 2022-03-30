@@ -8,6 +8,7 @@ import { ContestScreen } from './src/Contests/ContestScreen';
 import { globalColors } from './src/styles';
 import { ContestStateProvider } from './src/Contexts/ContestContext';
 import { ModalStateProvider } from './src/Contexts/ModalContext';
+import CameraView from './src/Components/CameraView';
 
 const Stack = createNativeStackNavigator();
 const defaultOptions = {
@@ -42,6 +43,11 @@ function App() {
               <Stack.Screen
                 name="Contest Screen"
                 component={ContestScreen}
+              />
+
+              <Stack.Screen
+                name="Camera"
+                component={CameraView}
               />
 
             </Stack.Navigator>

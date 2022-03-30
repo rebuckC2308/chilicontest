@@ -102,7 +102,7 @@ function AddEntryButton() {
   );
 }
 
-export function ContestScreen() {
+export function ContestScreen({ navigation }) {
   const {
     shouldDisplayErrorModal, errorModalText,
     setShouldDisplayErrorModal,
@@ -138,6 +138,7 @@ export function ContestScreen() {
           <CreateEntryForm
             setShouldFetchEntries={setShouldFetchEntries}
             setShowCreateEntryForm={setShowCreateEntryForm}
+            navigation={navigation}
           />
         </View>
       )}
