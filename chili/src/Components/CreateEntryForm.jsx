@@ -1,25 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import Spacer from './Spacer';
 import { styles as entryFormStyles } from '../Entries/entryFormStyle';
 import { createEntry } from '../Helpers/createEntry';
 import { ContestContext } from '../Contexts/ContestContext';
-import chilibowl from '../images/chilibowl.jpg';
+import { CameraContext } from '../Contexts/CameraContext';
 
 export function CreateEntryForm({
   setShouldFetchEntries,
   setShowCreateEntryForm,
   navigation,
 }) {
-  const [name, setName] = useState('');
-  // eslint-disable-next-line no-unused-vars
-  const [imageURL, setImageURL] = useState('');
-  const [description, setDiscription] = useState('');
+  const {
+    currentContestID, entryName, setEntryName, entryDescription, setEntryDescription,
+  } = useContext(ContestContext);
 
-  const { currentContestID } = useContext(ContestContext);
-
-  const imageURLTest = chilibowl;
+  const { image } = useContext(CameraContext);
 
   return (
     <View style={entryFormStyles.container}>
@@ -28,7 +25,7 @@ export function CreateEntryForm({
           <Input
             placeholder="Enter Entry Name"
             autoComplete="off"
-            onChangeText={setName}
+            onChangeText={setEntryName}
             inputStyle={{ color: 'white' }}
             placeholderTextColor="white"
           />
@@ -37,7 +34,7 @@ export function CreateEntryForm({
           <Input
             placeholder="Enter Description"
             autoComplete="off"
-            onChangeText={setDiscription}
+            onChangeText={setEntryDescription}
             inputStyle={{ color: 'white' }}
             placeholderTextColor="white"
           />
@@ -58,9 +55,9 @@ export function CreateEntryForm({
           // eslint-disable-next-line no-console
           onPress={() => createEntry({
             currentContestID,
-            name,
-            imageURLTest,
-            description,
+            entryName,
+            entryDescription,
+            image,
             setShouldFetchEntries,
             setShowCreateEntryForm,
           })}

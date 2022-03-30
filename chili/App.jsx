@@ -9,6 +9,7 @@ import { globalColors } from './src/styles';
 import { ContestStateProvider } from './src/Contexts/ContestContext';
 import { ModalStateProvider } from './src/Contexts/ModalContext';
 import CameraView from './src/Components/CameraView';
+import { CameraStateProvider } from './src/Contexts/CameraContext';
 
 const Stack = createNativeStackNavigator();
 const defaultOptions = {
@@ -28,29 +29,33 @@ function App() {
       <UserStateProvider>
         <ModalStateProvider>
           <ContestStateProvider>
-            <Stack.Navigator
-              screenOptions={{ ...defaultOptions, headerShown: true }}
-            >
-              <Stack.Screen
-                name="Chili Cook Off"
-                component={LandingScreen}
-              />
-              <Stack.Screen
-                name="Starter Screen"
-                component={StarterScreen}
-              />
+            <CameraStateProvider>
 
-              <Stack.Screen
-                name="Contest Screen"
-                component={ContestScreen}
-              />
+              <Stack.Navigator
+                screenOptions={{ ...defaultOptions, headerShown: true }}
+              >
+                <Stack.Screen
+                  name="Starter Screen"
+                  component={StarterScreen}
+                />
 
-              <Stack.Screen
-                name="Camera"
-                component={CameraView}
-              />
+                <Stack.Screen
+                  name="Contest Screen"
+                  component={ContestScreen}
+                />
 
-            </Stack.Navigator>
+                <Stack.Screen
+                  name="Camera"
+                  component={CameraView}
+                />
+                <Stack.Screen
+                  name="Chili Cook Off"
+                  component={LandingScreen}
+                />
+
+              </Stack.Navigator>
+
+            </CameraStateProvider>
           </ContestStateProvider>
         </ModalStateProvider>
       </UserStateProvider>
