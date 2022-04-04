@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useEffect, useState } from 'react';
 import {
   View, Text, Image, Dimensions, ScrollView, TouchableOpacity,
@@ -20,6 +21,9 @@ function EntriesContent({ entry }) {
     name, imageurl, description,
   } = entry;
 
+  console.log(entry);
+  console.log({ entryImage: entry.imageurl });
+
   return (
     <View>
       <Card containerStyle={
@@ -37,7 +41,7 @@ function EntriesContent({ entry }) {
             minWidth: width * 0.8,
             height: height * 0.45,
           }}
-          source={{ uri: imageurl }}
+          source={{ uri: `data:image/jpeg;base64,${imageurl}` }}
         />
         <Text>{`${description}`}</Text>
       </Card>
