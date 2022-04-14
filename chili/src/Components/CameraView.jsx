@@ -1,10 +1,12 @@
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect, useContext } from 'react';
 import {
-  StyleSheet, Text, View, Button, TouchableOpacity,
+  StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
 import { Camera } from 'expo-camera';
 import { CameraContext } from '../Contexts/CameraContext';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from 'react-native-elements';
 
 export default function CameraView({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -80,7 +82,13 @@ export default function CameraView({ navigation }) {
           </View>
           <Button
             style={styles.button}
-            title="Flip Image"
+            icon={
+                  <Icon
+                    name="rotate-right"
+                    size={25}
+                    color="white"
+                  />
+              }
             onPress={() => {
               setType(
                 type === Camera.Constants.Type.back
@@ -106,18 +114,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    // backgroundColor: 'transparent',
     flexDirection: 'column',
     margin: 20,
   },
   button: {
-    // flex: 0.1,
-    // alignSelf: 'flex-end',
     alignItems: 'center',
     height: 40,
     width: 70,
     borderRadius: 4,
-    backgroundColor: '#14274e',
   },
   text: {
     fontSize: 18,

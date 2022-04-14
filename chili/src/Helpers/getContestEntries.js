@@ -2,8 +2,10 @@
 import { BASEURL } from '@env';
 // import { getAllEntries } from './getAllEntries';
 
-export const getContestEntries = async ({ contestPIN, setCurrentContestID, navigation }) => {
+export const getContestEntries = async ({ contestPIN, setCurrentContestID, navigation, setErrorModalText,
+  setShouldDisplayErrorModal }) => {
   try {
+    console.log("HERE!")
     const response = await fetch(`${BASEURL}/getContestEntries`, {
       method: 'POST',
       headers: {
@@ -15,12 +17,15 @@ export const getContestEntries = async ({ contestPIN, setCurrentContestID, navig
     const { status } = response;
     const res = await response.json();
 
+    console.log(res)
     switch (status) {
       case 200:
         setCurrentContestID(res.id);
         navigation.navigate('Contest Screen');
         return;
       default:
+          setErrorModalText(res["errorMessage"])
+          setShouldDisplayErrorModal(true)
         break;
     }
   } catch (error) {
