@@ -70,13 +70,19 @@ function MainContent({ setIsLoading, navigation }) {
 
 const JoinContestButton = () => ( 
   <TouchableOpacity
-  onPress={() => getContestEntries({
+  onPress={() => { 
+    setIsLoading(true)
+
+    getContestEntries({
     contestPIN,
     setCurrentContestID,
     navigation,
     setErrorModalText,
     setShouldDisplayErrorModal,
-  })}
+    })
+  
+    setIsLoading(false)
+  }}
   >
   <View
     style={{
