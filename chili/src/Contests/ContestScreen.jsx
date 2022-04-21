@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   Dimensions,
-  ScrollView,
+  SafeAreaView,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -65,20 +65,25 @@ function NoEntriesComponent() {
 
 function EntriesCardView({ entries }) {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      bounces
-    >
+    <SafeAreaView style={{ backgroundColor: 'black' }}>
+
       {entries
-        && (
-        <FlatList
-          horizontal
-          data={entries}
-          renderItem={({ item }) => <EntriesContent entry={item} key={item.id} />}
-        />
-        )}
-    </ScrollView>
+            && (
+            <FlatList
+              horizontal
+              data={entries}
+              keyExtractor={(item, index) => index}
+              renderItem={({ item }) => (
+                <View>
+
+                  <EntriesContent entry={item} />
+
+                </View>
+              )}
+            />
+            )}
+
+    </SafeAreaView>
   );
 }
 
