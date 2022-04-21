@@ -211,8 +211,6 @@ export function ContestScreen({ navigation }) {
       </KeyboardAvoidingView>
   )
 
-  console.log({showCreateEntryForm})
-
   return showCreateEntryForm ? (
     <TouchableWithoutFeedback accessible={false}>
       <MainContent />

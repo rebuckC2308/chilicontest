@@ -17,11 +17,10 @@ export function CreateEntryForm({
   const {
     currentContestID, entryDescription, setEntryDescription,
   } = useContext(ContestContext);
-  const { image } = useContext(CameraContext);
+  const { image, setImage } = useContext(CameraContext);
   const { width, height } = Dimensions.get('window');
   const [ entryName, setEntryName ] = useState("")
 
-  image && console.log(image.uri)
   return (
     <View style={entryFormStyles.container}>
       <View style={entryFormStyles.inputs}>
@@ -68,14 +67,19 @@ export function CreateEntryForm({
           <Button
             buttonStyle={entryFormStyles.button}
             title="Submit Entry"
-            onPress={() => createEntry({
-              currentContestID,
-              entryName,
-              entryDescription,
-              image,
-              setShouldFetchEntries,
-              setShowCreateEntryForm,
-            })}
+            onPress={() => { 
+              createEntry({
+                currentContestID,
+                entryName,
+                entryDescription,
+                image,
+                setShouldFetchEntries,
+                setShowCreateEntryForm,
+              })
+            
+              // Clear Entry form data
+              setImage(null)
+            }}
           />
           <Spacer>
             {cancelButton()}
