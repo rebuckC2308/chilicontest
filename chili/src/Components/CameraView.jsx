@@ -29,7 +29,6 @@ export default function CameraView({ navigation }) {
     };
     if (camera) {
       const data = await camera.takePictureAsync(options);
-      // console.log(data.uri)
       setImage(data);
       navigation.navigate('Contest Screen');
     }
