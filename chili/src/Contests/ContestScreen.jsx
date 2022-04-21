@@ -65,19 +65,18 @@ function NoEntriesComponent() {
 
 function EntriesCardView({ entries }) {
   return (
-    <SafeAreaView style={{ backgroundColor: 'black' }}>
+    <SafeAreaView style={{ flex: 1 }}>
 
       {entries
             && (
             <FlatList
               horizontal
+              showsHorizontalScrollIndicator={false}
               data={entries}
               keyExtractor={(item, index) => index}
               renderItem={({ item }) => (
                 <View>
-
                   <EntriesContent entry={item} />
-
                 </View>
               )}
             />
@@ -175,10 +174,8 @@ export function ContestScreen({ navigation }) {
     setShouldFetchEntries(false);
   }, [shouldFetchEntries]);
 
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <KeyboardAvoidingView
-        // eslint-disable-next-line no-undef
+  const MainContent = () => (
+    <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={headerHeight}
         style={contestStyles.container}
@@ -212,6 +209,13 @@ export function ContestScreen({ navigation }) {
         </View>
         )}
       </KeyboardAvoidingView>
+  )
+
+  return showCreateEntryForm ? (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <MainContent />
     </TouchableWithoutFeedback>
-  );
+  ) : (
+    <MainContent />
+  )
 }

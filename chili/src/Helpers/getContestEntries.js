@@ -5,7 +5,6 @@ import { BASEURL } from '@env';
 export const getContestEntries = async ({ contestPIN, setCurrentContestID, navigation, setErrorModalText,
   setShouldDisplayErrorModal }) => {
   try {
-    console.log("HERE!")
     const response = await fetch(`${BASEURL}/getContestEntries`, {
       method: 'POST',
       headers: {
@@ -17,7 +16,6 @@ export const getContestEntries = async ({ contestPIN, setCurrentContestID, navig
     const { status } = response;
     const res = await response.json();
 
-    console.log(res)
     switch (status) {
       case 200:
         setCurrentContestID(res.id);
