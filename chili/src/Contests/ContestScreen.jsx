@@ -73,7 +73,7 @@ function EntriesCardView({ entries }) {
               horizontal
               showsHorizontalScrollIndicator={false}
               data={entries}
-              keyExtractor={(item, index) => index}
+              keyExtractor={(item, index) => String(index)}
               renderItem={({ item }) => (
                 <View>
                   <EntriesContent entry={item} />
@@ -211,8 +211,10 @@ export function ContestScreen({ navigation }) {
       </KeyboardAvoidingView>
   )
 
+  console.log({showCreateEntryForm})
+
   return showCreateEntryForm ? (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <TouchableWithoutFeedback accessible={false}>
       <MainContent />
     </TouchableWithoutFeedback>
   ) : (

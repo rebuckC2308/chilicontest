@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Image, Dimensions } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import Spacer from './Spacer';
@@ -15,10 +15,11 @@ export function CreateEntryForm({
   cancelButton
 }) {
   const {
-    currentContestID, entryName, setEntryName, entryDescription, setEntryDescription,
+    currentContestID, entryDescription, setEntryDescription,
   } = useContext(ContestContext);
   const { image } = useContext(CameraContext);
   const { width, height } = Dimensions.get('window');
+  const [ entryName, setEntryName ] = useState("")
 
   image && console.log(image.uri)
   return (
